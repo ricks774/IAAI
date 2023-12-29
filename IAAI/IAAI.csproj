@@ -1760,6 +1760,7 @@
     <Content Include="Areas\Backend\assets\vendors\typicons\typicons.ttf" />
     <Content Include="Areas\Backend\assets\vendors\typicons\typicons.woff" />
     <Content Include="Areas\Backend\assets\vendors\typicons\typicons.woff2" />
+    <Content Include="Areas\Backend\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
