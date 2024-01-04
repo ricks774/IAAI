@@ -24,6 +24,7 @@ namespace IAAI.Models
         [Display(Name = "發布時間")]
         public DateTime? PubDate { get; set; }
 
+        [Display(Name = "建立時間")]
         public DateTime CreateDate { get; set; } = DateTime.Now;
     }
 }

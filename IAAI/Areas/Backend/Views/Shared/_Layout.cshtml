@@ -6,35 +6,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @*<title>@ViewBag.Title - IAAI後台管理</title>*@
     <title>IAAI後台管理</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900' rel='stylesheet'
+          type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/Areas/Backend/css/lib/getmdl-select.min.css">
+    <link rel="stylesheet" href="~/Areas/Backend/css/lib/nv.d3.min.css">
+    <link rel="stylesheet" href="~/Areas/Backend/css/application.min.css">
+    <!-- endinject -->
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("應用程式名稱", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("首頁", "Index", "Home")</li>
-                    <li>@Html.ActionLink("關於", "About", "Home")</li>
-                    <li>@Html.ActionLink("連絡人", "Contact", "Home")</li>
-                </ul>
+<body style="padding:0;height:100%">
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header is-small-screen">
+        <header class="mdl-layout__header">
+        </header>
+
+        <div class="mdl-layout__drawer">
+            <header>darkboard</header>
+            <div class="scroll__wrapper" id="scroll__wrapper">
+                <div class="scroller" id="scroller">
+                    <div class="scroll__container" id="scroll__container">
+                        <nav class="mdl-navigation">
+                            <a class="mdl-navigation__link mdl-navigation__link--current" href="index.html">
+                                <i class="material-icons" role="presentation">dashboard</i>
+                                Dashboard
+                            </a>
+                            <div class="sub-navigation">
+                                <a class="mdl-navigation__link">
+                                    <i class="material-icons">view_comfy</i>
+                                    UI
+                                    <i class="material-icons">keyboard_arrow_down</i>
+                                </a>
+                                <div class="mdl-navigation">
+                                    <a class="mdl-navigation__link" href="ui-buttons.html">
+                                        Buttons
+                                    </a>
+                                    <a class="mdl-navigation__link" href="ui-cards.html">
+                                        Cards
+                                    </a>
+                                    <a class="mdl-navigation__link" href="ui-colors.html">
+                                        Colors
+                                    </a>
+                                    <a class="mdl-navigation__link" href="ui-form-components.html">
+                                        Forms
+                                    </a>
+                                    <a class="mdl-navigation__link" href="ui-icons.html">
+                                        Icons
+                                    </a>
+                                    <a class="mdl-navigation__link" href="ui-typography.html">
+                                        Typography
+                                    </a>
+                                    <a class="mdl-navigation__link" href="ui-tables.html">
+                                        Tables
+                                    </a>
+                                </div>
+                            </div>
+                            <a class="mdl-navigation__link" href="ui-components.html">
+                                <i class="material-icons">developer_board</i>
+                                Components
+                            </a>
+                            <a class="mdl-navigation__link" href="forms.html">
+                                <i class="material-icons" role="presentation">person</i>
+                                Account
+                            </a>
+                            <a class="mdl-navigation__link" href="maps.html">
+                                <i class="material-icons" role="presentation">map</i>
+                                Maps
+                            </a>
+                            <a class="mdl-navigation__link" href="charts.html">
+                                <i class="material-icons">multiline_chart</i>
+                                Charts
+                            </a>
+                            <div class="sub-navigation">
+                                <a class="mdl-navigation__link">
+                                    <i class="material-icons">pages</i>
+                                    Pages
+                                    <i class="material-icons">keyboard_arrow_down</i>
+                                </a>
+                                <div class="mdl-navigation">
+                                    <a class="mdl-navigation__link" href="login.html">
+                                        Sign in
+                                    </a>
+                                    <a class="mdl-navigation__link" href="sign-up.html">
+                                        Sign up
+                                    </a>
+                                    <a class="mdl-navigation__link" href="forgot-password.html">
+                                        Forgot password
+                                    </a>
+                                    <a class="mdl-navigation__link" href="404.html">
+                                        404
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="mdl-layout-spacer"></div>
+                            <hr>
+                            <a class="mdl-navigation__link" href="https://github.com/CreativeIT/getmdl-dashboard">
+                                <i class="material-icons" role="presentation">link</i>
+                                GitHub
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+                <div class='scroller__bar' id="scroller__bar"></div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 應用程式</p>
-        </footer>
+
+        <main class="mdl-layout__content">
+
+            <div class="mdl-grid mdl-grid--no-spacing dashboard">
+
+                <div class="mdl-grid mdl-cell mdl-cell--9-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone mdl-cell--top">
+
+                    <!-- Table-->
+                    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone ">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
