@@ -1,0 +1,54 @@
+﻿@model IEnumerable<IAAI.Models.About>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color:#f4f4f4">關於我們</h2>
+
+<p>
+    @Html.ActionLink("新增訊息", "Create", null, new { style = "color: #00bcd4;" })
+</p>
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp projects-table">
+    <tr>
+        <th class="mdl-data-table__cell--non-numeric">
+            @Html.DisplayNameFor(model => model.AboutUs)
+        </th>
+        <th class="mdl-data-table__cell--non-numeric">
+            @Html.DisplayNameFor(model => model.Organization)
+        </th>
+        <th class="mdl-data-table__cell--non-numeric">
+            @Html.DisplayNameFor(model => model.History)
+        </th>
+        <th class="mdl-data-table__cell--non-numeric">
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">
+                    @Html.DisplayFor(modelItem => item.AboutUs)
+                </td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    @Html.DisplayFor(modelItem => item.Organization)
+                </td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    @Html.DisplayFor(modelItem => item.History)
+                </td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    @Html.ActionLink("編輯", "Edit", new { id = item.Id }, new { style = "color: #00bcd4;" }) |
+                    @Html.ActionLink("詳細資訊", "Details", new { id = item.Id }, new { style = "color: #00bcd4;" }) |
+                    @Html.ActionLink("刪除", "Delete", new { id = item.Id }, new { style = "color: #00bcd4;" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
