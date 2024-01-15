@@ -14,6 +14,8 @@ namespace IAAI.Models
 
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<About> Abouts { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Permissions> Permissions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
