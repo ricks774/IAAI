@@ -19,6 +19,7 @@ namespace IAAI.Areas.Backend.Controllers
         {
             // 判斷是否已經登入
             // 檢查是否存在身份驗證 Cookie
+            // ASP.NET 使用的身份驗證 Cookie 的名稱是 .ASPXAUTH。這是在 FormsAuthentication 中的 FormsCookieName 屬性的默認值
             HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
             if (authCookie != null)
             {
