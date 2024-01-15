@@ -212,86 +212,7 @@
     <Content Include="Areas\Backend\Views\Abouts\Details.cshtml" />
     <Content Include="Areas\Backend\Views\Abouts\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Abouts\Index.cshtml" />
-    <Content Include="Scripts\ckeditor5\ckeditor.js.map" />
-    <Content Include="Scripts\ckeditor5\LICENSE.md" />
-    <Content Include="Scripts\ckeditor5\README.md" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\ckeditor5\ckeditor.js" />
-    <Content Include="Scripts\ckeditor5\index.html" />
-    <Content Include="Scripts\ckeditor5\sample\css\sample.css" />
-    <Content Include="Scripts\ckeditor5\sample\img\bg.png" />
-    <Content Include="Scripts\ckeditor5\sample\img\github.svg" />
-    <Content Include="Scripts\ckeditor5\sample\img\logo.svg" />
-    <Content Include="Scripts\ckeditor5\sample\img\umbrellas.jpg" />
-    <Content Include="Scripts\ckeditor5\translations\af.js" />
-    <Content Include="Scripts\ckeditor5\translations\ar.js" />
-    <Content Include="Scripts\ckeditor5\translations\ast.js" />
-    <Content Include="Scripts\ckeditor5\translations\az.js" />
-    <Content Include="Scripts\ckeditor5\translations\bg.js" />
-    <Content Include="Scripts\ckeditor5\translations\bn.js" />
-    <Content Include="Scripts\ckeditor5\translations\bs.js" />
-    <Content Include="Scripts\ckeditor5\translations\ca.js" />
-    <Content Include="Scripts\ckeditor5\translations\cs.js" />
-    <Content Include="Scripts\ckeditor5\translations\da.js" />
-    <Content Include="Scripts\ckeditor5\translations\de-ch.js" />
-    <Content Include="Scripts\ckeditor5\translations\de.js" />
-    <Content Include="Scripts\ckeditor5\translations\el.js" />
-    <Content Include="Scripts\ckeditor5\translations\en-au.js" />
-    <Content Include="Scripts\ckeditor5\translations\en-gb.js" />
-    <Content Include="Scripts\ckeditor5\translations\eo.js" />
-    <Content Include="Scripts\ckeditor5\translations\es-co.js" />
-    <Content Include="Scripts\ckeditor5\translations\es.js" />
-    <Content Include="Scripts\ckeditor5\translations\et.js" />
-    <Content Include="Scripts\ckeditor5\translations\eu.js" />
-    <Content Include="Scripts\ckeditor5\translations\fa.js" />
-    <Content Include="Scripts\ckeditor5\translations\fi.js" />
-    <Content Include="Scripts\ckeditor5\translations\fr.js" />
-    <Content Include="Scripts\ckeditor5\translations\gl.js" />
-    <Content Include="Scripts\ckeditor5\translations\gu.js" />
-    <Content Include="Scripts\ckeditor5\translations\he.js" />
-    <Content Include="Scripts\ckeditor5\translations\hi.js" />
-    <Content Include="Scripts\ckeditor5\translations\hr.js" />
-    <Content Include="Scripts\ckeditor5\translations\hu.js" />
-    <Content Include="Scripts\ckeditor5\translations\hy.js" />
-    <Content Include="Scripts\ckeditor5\translations\id.js" />
-    <Content Include="Scripts\ckeditor5\translations\it.js" />
-    <Content Include="Scripts\ckeditor5\translations\ja.js" />
-    <Content Include="Scripts\ckeditor5\translations\jv.js" />
-    <Content Include="Scripts\ckeditor5\translations\km.js" />
-    <Content Include="Scripts\ckeditor5\translations\kn.js" />
-    <Content Include="Scripts\ckeditor5\translations\ko.js" />
-    <Content Include="Scripts\ckeditor5\translations\ku.js" />
-    <Content Include="Scripts\ckeditor5\translations\lt.js" />
-    <Content Include="Scripts\ckeditor5\translations\lv.js" />
-    <Content Include="Scripts\ckeditor5\translations\ms.js" />
-    <Content Include="Scripts\ckeditor5\translations\nb.js" />
-    <Content Include="Scripts\ckeditor5\translations\ne.js" />
-    <Content Include="Scripts\ckeditor5\translations\nl.js" />
-    <Content Include="Scripts\ckeditor5\translations\no.js" />
-    <Content Include="Scripts\ckeditor5\translations\oc.js" />
-    <Content Include="Scripts\ckeditor5\translations\pl.js" />
-    <Content Include="Scripts\ckeditor5\translations\pt-br.js" />
-    <Content Include="Scripts\ckeditor5\translations\pt.js" />
-    <Content Include="Scripts\ckeditor5\translations\ro.js" />
-    <Content Include="Scripts\ckeditor5\translations\ru.js" />
-    <Content Include="Scripts\ckeditor5\translations\si.js" />
-    <Content Include="Scripts\ckeditor5\translations\sk.js" />
-    <Content Include="Scripts\ckeditor5\translations\sl.js" />
-    <Content Include="Scripts\ckeditor5\translations\sq.js" />
-    <Content Include="Scripts\ckeditor5\translations\sr-latn.js" />
-    <Content Include="Scripts\ckeditor5\translations\sr.js" />
-    <Content Include="Scripts\ckeditor5\translations\sv.js" />
-    <Content Include="Scripts\ckeditor5\translations\th.js" />
-    <Content Include="Scripts\ckeditor5\translations\tk.js" />
-    <Content Include="Scripts\ckeditor5\translations\tr.js" />
-    <Content Include="Scripts\ckeditor5\translations\tt.js" />
-    <Content Include="Scripts\ckeditor5\translations\ug.js" />
-    <Content Include="Scripts\ckeditor5\translations\uk.js" />
-    <Content Include="Scripts\ckeditor5\translations\ur.js" />
-    <Content Include="Scripts\ckeditor5\translations\uz.js" />
-    <Content Include="Scripts\ckeditor5\translations\vi.js" />
-    <Content Include="Scripts\ckeditor5\translations\zh-cn.js" />
-    <Content Include="Scripts\ckeditor5\translations\zh.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -336,9 +257,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\ckeditor5\ckeditor.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

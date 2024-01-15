@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace IAAI.Models
 {
@@ -18,6 +19,7 @@ namespace IAAI.Models
         [Display(Name = "新聞名稱")]
         public string Title { get; set; }
 
+        [AllowHtml]
         [Display(Name = "新聞內容")]
         public string Content { get; set; }
 

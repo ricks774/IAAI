@@ -35,8 +35,8 @@
                 <td class="mdl-data-table__cell--non-numeric">
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
-                <td class="mdl-data-table__cell--non-numeric" style="white-space:normal">
-                    @Html.DisplayFor(modelItem => item.Content)
+                <td class="mdl-data-table__cell--non-numeric" style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                    @Html.Raw(item.Content)
                 </td>
                 <td class="mdl-data-table__cell--non-numeric">
                     @Html.DisplayFor(modelItem => item.PubDate)

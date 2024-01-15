@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security.AntiXss;
 using IAAI.Models;
 
 namespace IAAI.Areas.Backend.Controllers

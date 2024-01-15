@@ -5,6 +5,23 @@
     Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
 }
 
+@section scripts {
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor-news'))
+            .then(editor => {
+                editor.setData(document.querySelector('#Content').value);
+                editor.model.document.on('change', () => {
+                    document.querySelector('#Content').value = editor.getData();
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}
+
 <h2 style="color:#f4f4f4">編輯訊息</h2>
 
 @using (Html.BeginForm())
@@ -27,9 +44,11 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2", @style = "color:#f4f4f4" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            <div class="col-md-8">
+                <div id="editor-news">
+                    @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
 

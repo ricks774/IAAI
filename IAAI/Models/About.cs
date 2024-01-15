@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace IAAI.Models
 {
@@ -17,6 +18,7 @@ namespace IAAI.Models
         [Display(Name = "關於我們")]
         public string AboutUs { get; set; }
 
+        [AllowHtml]
         [Display(Name = "組織架構")]
         public string Organization { get; set; }
 

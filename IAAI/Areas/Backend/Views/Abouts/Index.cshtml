@@ -11,21 +11,22 @@
     @Html.ActionLink("新增訊息", "Create", null, new { style = "color: #00bcd4;" })
 </p>
 <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp projects-table">
-    <tr>
-        <th class="mdl-data-table__cell--non-numeric">
-            @Html.DisplayNameFor(model => model.AboutUs)
-        </th>
-        <th class="mdl-data-table__cell--non-numeric">
-            @Html.DisplayNameFor(model => model.Organization)
-        </th>
-        <th class="mdl-data-table__cell--non-numeric">
-            @Html.DisplayNameFor(model => model.History)
-        </th>
-        <th class="mdl-data-table__cell--non-numeric">
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </th>
-        <th></th>
-    </tr>
+    <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">
+                @Html.DisplayNameFor(model => model.AboutUs)
+            </th>
+            <th class="mdl-data-table__cell--non-numeric">
+                @Html.DisplayNameFor(model => model.Organization)
+            </th>
+            <th class="mdl-data-table__cell--non-numeric">
+                @Html.DisplayNameFor(model => model.History)
+            </th>
+            <th class="mdl-data-table__cell--non-numeric">
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+        </tr>
+    </thead>
 
     <tbody>
         @foreach (var item in Model)
@@ -34,8 +35,8 @@
                 <td class="mdl-data-table__cell--non-numeric">
                     @Html.DisplayFor(modelItem => item.AboutUs)
                 </td>
-                <td class="mdl-data-table__cell--non-numeric">
-                    @Html.DisplayFor(modelItem => item.Organization)
+                <td class="mdl-data-table__cell--non-numeric" style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; ">
+                    @Html.Raw(item.Organization)
                 </td>
                 <td class="mdl-data-table__cell--non-numeric">
                     @Html.DisplayFor(modelItem => item.History)
