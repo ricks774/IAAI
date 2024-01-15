@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace IAAI.Areas.Backend.Controllers
 {
@@ -16,6 +17,14 @@ namespace IAAI.Areas.Backend.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            // 判斷是否已經登入
+            // 檢查是否存在身份驗證 Cookie
+            HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (authCookie != null)
+            {
+                return RedirectToAction("Index", "News");
+            }
+
             return View();
         }
 
@@ -45,7 +54,10 @@ namespace IAAI.Areas.Backend.Controllers
 
                 if (isPasswordCorrect)
                 {
-                    // 密碼正確，導向到指定的頁面
+                    // 密碼正確，設定身份驗證 Cookie
+                    Utility.SetAuthenTicket(userData.Account, userData.Id.ToString());
+
+                    // 導向到指定的頁面
                     return RedirectToAction("Index", "News");
                 }
                 else
