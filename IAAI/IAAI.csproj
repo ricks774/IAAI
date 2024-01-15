@@ -131,12 +131,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Backend\BackendAreaRegistration.cs" />
+    <Compile Include="Areas\Backend\Controllers\AboutsController.cs" />
     <Compile Include="Areas\Backend\Controllers\NewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\About.cs" />
     <Compile Include="Models\IAAIDBContent.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,6 +207,11 @@
     <Content Include="Areas\Backend\Views\News\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\News\Index.cshtml" />
     <Content Include="Areas\Backend\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Backend\Views\Abouts\Create.cshtml" />
+    <Content Include="Areas\Backend\Views\Abouts\Delete.cshtml" />
+    <Content Include="Areas\Backend\Views\Abouts\Details.cshtml" />
+    <Content Include="Areas\Backend\Views\Abouts\Edit.cshtml" />
+    <Content Include="Areas\Backend\Views\Abouts\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

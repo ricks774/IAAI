@@ -1,11 +1,11 @@
-﻿@model IEnumerable<IAAI.Models.News>
+﻿@model IEnumerable<IAAI.Models.About>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
 }
 
-<h2 style="color:#f4f4f4">訊息</h2>
+<h2 style="color:#f4f4f4">關於我們</h2>
 
 <p>
     @Html.ActionLink("新增訊息", "Create", null, new { style = "color: #00bcd4;" })
@@ -14,13 +14,13 @@
     <thead>
         <tr>
             <th class="mdl-data-table__cell--non-numeric">
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.AboutUs)
             </th>
             <th class="mdl-data-table__cell--non-numeric">
-                @Html.DisplayNameFor(model => model.Content)
+                @Html.DisplayNameFor(model => model.Organization)
             </th>
             <th class="mdl-data-table__cell--non-numeric">
-                @Html.DisplayNameFor(model => model.PubDate)
+                @Html.DisplayNameFor(model => model.History)
             </th>
             <th class="mdl-data-table__cell--non-numeric">
                 @Html.DisplayNameFor(model => model.CreateDate)
@@ -33,13 +33,13 @@
         {
             <tr>
                 <td class="mdl-data-table__cell--non-numeric">
-                    @Html.DisplayFor(modelItem => item.Title)
+                    @Html.DisplayFor(modelItem => item.AboutUs)
                 </td>
-                <td class="mdl-data-table__cell--non-numeric" style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                    @Html.Raw(item.Content)
+                <td class="mdl-data-table__cell--non-numeric" style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; ">
+                    @Html.Raw(item.Organization)
                 </td>
                 <td class="mdl-data-table__cell--non-numeric">
-                    @Html.DisplayFor(modelItem => item.PubDate)
+                    @Html.DisplayFor(modelItem => item.History)
                 </td>
                 <td class="mdl-data-table__cell--non-numeric">
                     @Html.DisplayFor(modelItem => item.CreateDate)
