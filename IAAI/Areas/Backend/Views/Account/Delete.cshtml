@@ -1,0 +1,60 @@
+﻿@model IAAI.Models.User
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <style>
+        body {
+            color: #f4f4f4;
+        }
+
+        a {
+        }
+    </style>
+}
+
+<h2>刪除使用者</h2>
+
+<h3>確定要刪除該使用者帳號嗎?</h3>
+<div>
+    <h4>使用者資訊</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Account)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Guid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Guid)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="刪除" class="mdl-button mdl-js-button mdl-js-ripple-effect color-text--red" onclick="return confirm('確定要刪除嗎？');" /> |
+            @Html.ActionLink("返回列表", "Index", null, new { @class = "mdl-button mdl-js-button mdl-js-ripple-effect color-text--teal" })
+        </div>
+    }
+</div>

@@ -18,6 +18,7 @@
     <!-- endinject -->
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
 </head>
 <body style="padding:0;height:100%">
 
@@ -40,54 +41,6 @@
                     </span>
                 </a>
             </div>
-            <!-- Account dropdawn-->
-            <ul class="mdl-menu mdl-list mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp account-dropdown"
-                for="icon">
-                <li class="mdl-list__item mdl-list__item--two-line">
-                    <span class="mdl-list__item-primary-content">
-                        <span class="material-icons mdl-list__item-avatar"></span>
-                        <span>Luke</span>
-                        <span class="mdl-list__item-sub-title">Luke@skywalker.com</span>
-                    </span>
-                </li>
-                <li class="list__item--border-top"></li>
-                <li class="mdl-menu__item mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">account_circle</i>
-                        My account
-                    </span>
-                </li>
-                <li class="mdl-menu__item mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">check_box</i>
-                        My tasks
-                    </span>
-                    <span class="mdl-list__item-secondary-content">
-                        <span class="label background-color--primary">3 new</span>
-                    </span>
-                </li>
-                <li class="mdl-menu__item mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">perm_contact_calendar</i>
-                        My events
-                    </span>
-                </li>
-                <li class="list__item--border-top"></li>
-                <li class="mdl-menu__item mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">settings</i>
-                        Settings
-                    </span>
-                </li>
-                <a href="login.html">
-                <li class="mdl-menu__item mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
-                        Log out
-                    </span>
-                </li>
-                </a>
-            </ul>
         </header>
 
         <div class="mdl-layout__drawer">
@@ -103,7 +56,7 @@
                             <div class="sub-navigation">
                                 <a class="mdl-navigation__link">
                                     <i class="material-icons">view_comfy</i>
-                                    關於
+                                    關於我們管理
                                     <i class="material-icons">keyboard_arrow_down</i>
                                 </a>
                                 <div class="mdl-navigation">
@@ -116,57 +69,45 @@
                                     <a class="mdl-navigation__link" href="ui-colors.html">
                                         沿革
                                     </a>
-                                    <a class="mdl-navigation__link" href="ui-form-components.html">
-                                        Forms
+                                    <a class="mdl-navigation__link" href="ui-colors.html">
+                                        配正會員
                                     </a>
-                                    <a class="mdl-navigation__link" href="ui-icons.html">
-                                        Icons
-                                    </a>
-                                    <a class="mdl-navigation__link" href="ui-typography.html">
-                                        Typography
-                                    </a>
-                                    <a class="mdl-navigation__link" href="ui-tables.html">
-                                        Tables
+                                    <a class="mdl-navigation__link" href="ui-colors.html">
+                                        專家介紹
                                     </a>
                                 </div>
                             </div>
-                            <a class="mdl-navigation__link" href="ui-components.html">
-                                <i class="material-icons">developer_board</i>
-                                Components
-                            </a>
-                            <a class="mdl-navigation__link" href="forms.html">
-                                <i class="material-icons" role="presentation">person</i>
-                                Account
-                            </a>
-                            <a class="mdl-navigation__link" href="maps.html">
-                                <i class="material-icons" role="presentation">map</i>
-                                Maps
-                            </a>
-                            <a class="mdl-navigation__link" href="charts.html">
-                                <i class="material-icons">multiline_chart</i>
-                                Charts
-                            </a>
+                            @*最新消息*@
                             <div class="sub-navigation">
                                 <a class="mdl-navigation__link">
                                     <i class="material-icons">pages</i>
-                                    Pages
+                                    訊息發布管理
+                                    <i class="material-icons">keyboard_arrow_down</i>
+                                </a>
+                                <div class="mdl-navigation">
+                                    <a class="mdl-navigation__link" href="sign-up.html">
+                                        最新消息
+                                    </a>
+                                </div>
+                            </div>
+                            @*最新消息*@
+                            @*帳號管理*@
+                            <div class="sub-navigation">
+                                <a class="mdl-navigation__link">
+                                    <i class="material-icons">person</i>
+                                    帳號管理
                                     <i class="material-icons">keyboard_arrow_down</i>
                                 </a>
                                 <div class="mdl-navigation">
                                     <a class="mdl-navigation__link" href="login.html">
-                                        Sign in
+                                        角色管理
                                     </a>
                                     <a class="mdl-navigation__link" href="sign-up.html">
-                                        Sign up
-                                    </a>
-                                    <a class="mdl-navigation__link" href="forgot-password.html">
-                                        Forgot password
-                                    </a>
-                                    <a class="mdl-navigation__link" href="404.html">
-                                        404
+                                        帳號管理
                                     </a>
                                 </div>
                             </div>
+                            @*帳號管理*@
                             <div class="mdl-layout-spacer"></div>
                             <hr>
                             <a class="mdl-navigation__link" href="https://github.com/CreativeIT/getmdl-dashboard">
