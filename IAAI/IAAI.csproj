@@ -170,6 +170,7 @@
     <Content Include="Areas\Backend\images\map_target_images_sprite.png" />
     <Content Include="Areas\Backend\images\marker.png" />
     <Content Include="Areas\Backend\images\nathan-fillion.png" />
+    <Content Include="Areas\Backend\images\portrait.png" />
     <Content Include="Areas\Backend\images\robot.png" />
     <Content Include="Areas\Backend\images\sao_paulo.jpg" />
     <Content Include="Areas\Backend\images\skype.svg" />

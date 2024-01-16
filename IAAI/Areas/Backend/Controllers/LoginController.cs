@@ -2,6 +2,7 @@
 using MVC0917.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -56,7 +57,7 @@ namespace IAAI.Areas.Backend.Controllers
                 if (isPasswordCorrect)
                 {
                     // 密碼正確，設定身份驗證 Cookie
-                    Utility.SetAuthenTicket(userData.Account, userData.Id.ToString());
+                    Utility.SetAuthenTicket(userData.Name, userData.Id.ToString());
 
                     // 導向到指定的頁面
                     return RedirectToAction("Index", "News");
@@ -70,6 +71,16 @@ namespace IAAI.Areas.Backend.Controllers
                 }
             }
             return View();
+        }
+
+        [Authorize]
+        public ActionResult Logout()
+        {
+            // 登出相關的邏輯
+            FormsAuthentication.SignOut();
+
+            // 重定向到登出後的頁面，清除 ReturnUrl 參數
+            return RedirectToAction("Login", "Login", new { area = "Backend" });
         }
     }
 }

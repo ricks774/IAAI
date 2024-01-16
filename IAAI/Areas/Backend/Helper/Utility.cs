@@ -1,15 +1,19 @@
-﻿using System;
+﻿using IAAI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
 
 namespace MVC0917.Models
 {
     public class Utility
     {
+        private IAAIDBContent db = new IAAIDBContent();
+
         #region "密碼加密"
 
         public const int DefaultSaltSize = 5;
@@ -117,5 +121,16 @@ namespace MVC0917.Models
         }
 
         #endregion "驗證密碼"
+
+        #region"取得票證資料"
+
+        public static (string userId, string userName) GetAuthenData(System.Security.Principal.IIdentity identity)
+        {
+            string userId = identity.Name; // 會取得使用者Id
+            string userName = ((FormsIdentity)identity).Ticket.UserData;   // 取得使用者名稱
+            return (userId, userName);
+        }
+
+        #endregion
     }
 }
