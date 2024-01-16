@@ -23,6 +23,71 @@
 
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header is-small-screen">
         <header class="mdl-layout__header">
+            <div class="avatar-dropdown" style="text-align:right; margin-top:21px; margin-right:34px">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <span style="padding-right:20px">歡迎回來，@ViewBag.UserName</span>
+                }
+                else
+                {
+                    <span style="padding-right:20px">未驗證使用者</span>
+                }
+                @*<img src="~/Areas/Backend/images/portrait.png" style="width:28px; height:28px">*@
+                <a href="login.html" id="logoutLink">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
+                        Log out
+                    </span>
+                </a>
+            </div>
+            <!-- Account dropdawn-->
+            <ul class="mdl-menu mdl-list mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp account-dropdown"
+                for="icon">
+                <li class="mdl-list__item mdl-list__item--two-line">
+                    <span class="mdl-list__item-primary-content">
+                        <span class="material-icons mdl-list__item-avatar"></span>
+                        <span>Luke</span>
+                        <span class="mdl-list__item-sub-title">Luke@skywalker.com</span>
+                    </span>
+                </li>
+                <li class="list__item--border-top"></li>
+                <li class="mdl-menu__item mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon">account_circle</i>
+                        My account
+                    </span>
+                </li>
+                <li class="mdl-menu__item mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon">check_box</i>
+                        My tasks
+                    </span>
+                    <span class="mdl-list__item-secondary-content">
+                        <span class="label background-color--primary">3 new</span>
+                    </span>
+                </li>
+                <li class="mdl-menu__item mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon">perm_contact_calendar</i>
+                        My events
+                    </span>
+                </li>
+                <li class="list__item--border-top"></li>
+                <li class="mdl-menu__item mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon">settings</i>
+                        Settings
+                    </span>
+                </li>
+                <a href="login.html">
+                <li class="mdl-menu__item mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
+                        Log out
+                    </span>
+                </li>
+                </a>
+            </ul>
         </header>
 
         <div class="mdl-layout__drawer">
@@ -42,7 +107,7 @@
                                     <i class="material-icons">keyboard_arrow_down</i>
                                 </a>
                                 <div class="mdl-navigation">
-                                    <a class="mdl-navigation__link" href="~/Backend/Abouts">
+                                    <a class="mdl-navigation__link" href="~/Backend/Abouts/index">
                                         關於我們
                                     </a>
                                     <a class="mdl-navigation__link" href="ui-cards.html">
@@ -149,5 +214,31 @@
     <script src="~/Areas/Backend/js/widgets/pie-chart/pie-charts-nvd3.min.js"></script>
     <script src="~/Areas/Backend/js/widgets/table/table.min.js"></script>
     <script src="~/Areas/Backend/js/widgets/todo/todo.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // 監聽點擊事件
+            $("#logoutLink").click(function (e) {
+                e.preventDefault(); // 防止點擊連結時跳轉到 login.html
+
+                // 在這裡執行登出相關的操作
+                // 例如，呼叫登出函數、發送登出請求等
+                logout();
+            });
+
+            // 登出函數的範例
+            function logout() {
+                $.ajax({
+                    url: '/Backend/Login/Logout',   // 放 Controller 位置跟方法名稱
+                    type: 'POST', // 或 'GET'
+                    success: function () {
+                        // 成功登出
+                        //console.log("User logged out");
+                        window.location.href = '/Backend/Login/Login'; // 導回登入頁面
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

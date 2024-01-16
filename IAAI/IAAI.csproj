@@ -132,7 +132,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Backend\BackendAreaRegistration.cs" />
     <Compile Include="Areas\Backend\Controllers\AboutsController.cs" />
+    <Compile Include="Areas\Backend\Controllers\LoginController.cs" />
     <Compile Include="Areas\Backend\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Backend\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Backend\Helper\Utility.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -141,6 +144,9 @@
     <Compile Include="Models\About.cs" />
     <Compile Include="Models\IAAIDBContent.cs" />
     <Compile Include="Models\News.cs" />
+    <Compile Include="Models\Permissions.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ViewUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +170,7 @@
     <Content Include="Areas\Backend\images\map_target_images_sprite.png" />
     <Content Include="Areas\Backend\images\marker.png" />
     <Content Include="Areas\Backend\images\nathan-fillion.png" />
+    <Content Include="Areas\Backend\images\portrait.png" />
     <Content Include="Areas\Backend\images\robot.png" />
     <Content Include="Areas\Backend\images\sao_paulo.jpg" />
     <Content Include="Areas\Backend\images\skype.svg" />
@@ -212,7 +219,17 @@
     <Content Include="Areas\Backend\Views\Abouts\Details.cshtml" />
     <Content Include="Areas\Backend\Views\Abouts\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Abouts\Index.cshtml" />
+    <Content Include="Areas\Backend\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Backend\Views\Users\Delete.cshtml" />
+    <Content Include="Areas\Backend\Views\Users\Details.cshtml" />
+    <Content Include="Areas\Backend\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Backend\Views\Users\Index.cshtml" />
+    <Content Include="Scripts\dist\tree.js.map" />
+    <Content Include="Scripts\dist\tree.min.js.map" />
+    <Content Include="Areas\Backend\Views\Login\Login.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\dist\tree.js" />
+    <Content Include="Scripts\dist\tree.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />

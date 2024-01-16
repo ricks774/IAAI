@@ -17,7 +17,7 @@ namespace IAAI.Areas.Backend
             context.MapRoute(
                 "Backend_default",
                 "Backend/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Login", id = UrlParameter.Optional }
             );
         }
     }
