@@ -53,16 +53,18 @@ namespace MVC0917.Models
         /// </summary>
         /// <param name="userData">使用者資料</param>
         /// <param name="userId">UserAccount</param>
-        public static void SetAuthenTicket(string userData, string userId)
+        public static void SetAuthenTicket(string userData, string userId, string customData)
         {
+            // 將自定義資料附加到 userData 中
+            string userDataWithCustomData = $"{userData}|{customData}";
+
             //宣告一個驗證票
-            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, userId, DateTime.Now, DateTime.Now.AddHours(3), false, userData);
+            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, userId, DateTime.Now, DateTime.Now.AddHours(3), false, userDataWithCustomData);
             //加密驗證票
             string encryptedTicket = FormsAuthentication.Encrypt(ticket);
             //建立Cookie
             HttpCookie authenticationcookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
             //將Cookie寫入回應
-
             HttpContext.Current.Response.Cookies.Add(authenticationcookie);
         }
 
@@ -124,11 +126,18 @@ namespace MVC0917.Models
 
         #region"取得票證資料"
 
-        public static (string userId, string userName) GetAuthenData(System.Security.Principal.IIdentity identity)
+        public static (string userId, string userName, string permissions) GetAuthenData(System.Security.Principal.IIdentity identity)
         {
-            string userId = identity.Name; // 會取得使用者Id
-            string userName = ((FormsIdentity)identity).Ticket.UserData;   // 取得使用者名稱
-            return (userId, userName);
+            string userId = identity.Name; // 取得使用者Id
+            string userData = ((FormsIdentity)identity).Ticket.UserData;   // 取得使用者資料
+
+            // 解析資料，使用者資料格式為 "userName | permissions"
+            string[] userDataParts = userData.Split('|');
+
+            string userName = userDataParts.Length > 0 ? userDataParts[0] : string.Empty;
+            string permissions = userDataParts.Length > 1 ? userDataParts[1] : string.Empty;
+
+            return (userId, userName, permissions);
         }
 
         #endregion

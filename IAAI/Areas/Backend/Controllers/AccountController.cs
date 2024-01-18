@@ -24,7 +24,9 @@ namespace IAAI.Areas.Backend.Controllers
             {
                 var userData = Utility.GetAuthenData(User.Identity);
                 ViewBag.UserName = userData.userName;
+                ViewBag.SideBar = userData.permissions;
             }
+
             return View(db.Users.ToList());
         }
 
@@ -124,6 +126,15 @@ namespace IAAI.Areas.Backend.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            // 錯誤時重新渲染
+            List<Permissions> permissions = db.Permissions.ToList();
+            StringBuilder sb = new StringBuilder("[");
+            List<Permissions> root = permissions.Where(p => p.ParentId == null).ToList();   // 找出主要節點
+            GetTree(root, sb);  // 執行遞迴
+            sb.Append("]");
+            ViewBag.treeView = sb.ToString();
+
             return View(user);
         }
 
