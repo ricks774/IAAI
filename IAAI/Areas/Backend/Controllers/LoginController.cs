@@ -72,11 +72,11 @@ namespace IAAI.Areas.Backend.Controllers
                     GetSideBar(root, sb, userPermiss);
                     string permission = sb.ToString();
 
-                    // 密碼正確，設定身份驗證 Cookie，儲存使用者名稱、Id、跟權限
+                    // 密碼正確，設定身份驗證 Cookie，儲存使用者名稱、Id、跟權限 *cookie有大小限制4096*
                     Utility.SetAuthenTicket(userData.Name, userData.Id.ToString(), permission);
 
                     // 導向到指定的頁面
-                    return RedirectToAction("Index", "News");
+                    return RedirectToAction("Index", "Account");
                 }
                 else
                 {
