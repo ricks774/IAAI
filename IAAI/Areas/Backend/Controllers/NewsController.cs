@@ -24,6 +24,7 @@ namespace IAAI.Areas.Backend.Controllers
             {
                 var userData = Utility.GetAuthenData(User.Identity);
                 ViewBag.UserName = userData.userName;
+                ViewBag.SideBar = userData.permissions;
             }
 
             return View(db.News.ToList());

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security.AntiXss;
 using IAAI.Models;
+using MVC0917.Models;
 
 namespace IAAI.Areas.Backend.Controllers
 {
@@ -16,8 +17,14 @@ namespace IAAI.Areas.Backend.Controllers
         private IAAIDBContent db = new IAAIDBContent();
 
         // GET: Backend/Abouts
+        [Authorize]
         public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                var userData = Utility.GetAuthenData(User.Identity);
+                ViewBag.UserName = userData.userName;
+            }
             return View(db.Abouts.ToList());
         }
 

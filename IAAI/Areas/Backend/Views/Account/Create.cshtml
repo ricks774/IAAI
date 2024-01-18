@@ -1,0 +1,91 @@
+﻿@model IAAI.Models.User
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <style>
+        body {
+            color: azure;
+        }
+    </style>
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>User</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="treeView">
+                </div>
+                @Html.HiddenFor(model => model.Permissions)     @*不顯示的欄位 用來儲存權限*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts {
+    <script src="~/Scripts/dist/tree.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+    // prettier-ignore
+    let data = @Html.Raw(ViewBag.treeView)
+    let tree = new Tree('.treeView', {
+        data: [{ id: '-1', text: '所有權限', children: data }],
+        closeDepth: 3,
+        loaded: function () {
+            //this.values = ['0-0-0', '0-1-1'];
+            console.log(this.selectedNodes);
+            console.log(this.values);
+            //this.disables = ['0-0-0', '0-0-1', '0-0-2']
+        },
+        onChange: function () {
+            $("#Permissions").val(this.values);
+            console.log(this.values);
+        }
+    })
+    </script>
+}

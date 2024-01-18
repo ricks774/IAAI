@@ -18,6 +18,7 @@
     <!-- endinject -->
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
 </head>
 <body style="padding:0;height:100%">
 
@@ -40,54 +41,6 @@
                     </span>
                 </a>
             </div>
-            <!-- Account dropdawn-->
-            <ul class="mdl-menu mdl-list mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-shadow--2dp account-dropdown"
-                for="icon">
-                <li class="mdl-list__item mdl-list__item--two-line">
-                    <span class="mdl-list__item-primary-content">
-                        <span class="material-icons mdl-list__item-avatar"></span>
-                        <span>Luke</span>
-                        <span class="mdl-list__item-sub-title">Luke@skywalker.com</span>
-                    </span>
-                </li>
-                <li class="list__item--border-top"></li>
-                <li class="mdl-menu__item mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">account_circle</i>
-                        My account
-                    </span>
-                </li>
-                <li class="mdl-menu__item mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">check_box</i>
-                        My tasks
-                    </span>
-                    <span class="mdl-list__item-secondary-content">
-                        <span class="label background-color--primary">3 new</span>
-                    </span>
-                </li>
-                <li class="mdl-menu__item mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">perm_contact_calendar</i>
-                        My events
-                    </span>
-                </li>
-                <li class="list__item--border-top"></li>
-                <li class="mdl-menu__item mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon">settings</i>
-                        Settings
-                    </span>
-                </li>
-                <a href="login.html">
-                <li class="mdl-menu__item mdl-list__item">
-                    <span class="mdl-list__item-primary-content">
-                        <i class="material-icons mdl-list__item-icon text-color--secondary">exit_to_app</i>
-                        Log out
-                    </span>
-                </li>
-                </a>
-            </ul>
         </header>
 
         <div class="mdl-layout__drawer">
@@ -100,73 +53,11 @@
                                 <i class="material-icons" role="presentation">dashboard</i>
                                 Dashboard
                             </a>
-                            <div class="sub-navigation">
-                                <a class="mdl-navigation__link">
-                                    <i class="material-icons">view_comfy</i>
-                                    關於
-                                    <i class="material-icons">keyboard_arrow_down</i>
-                                </a>
-                                <div class="mdl-navigation">
-                                    <a class="mdl-navigation__link" href="~/Backend/Abouts/index">
-                                        關於我們
-                                    </a>
-                                    <a class="mdl-navigation__link" href="ui-cards.html">
-                                        組織架構
-                                    </a>
-                                    <a class="mdl-navigation__link" href="ui-colors.html">
-                                        沿革
-                                    </a>
-                                    <a class="mdl-navigation__link" href="ui-form-components.html">
-                                        Forms
-                                    </a>
-                                    <a class="mdl-navigation__link" href="ui-icons.html">
-                                        Icons
-                                    </a>
-                                    <a class="mdl-navigation__link" href="ui-typography.html">
-                                        Typography
-                                    </a>
-                                    <a class="mdl-navigation__link" href="ui-tables.html">
-                                        Tables
-                                    </a>
-                                </div>
+                            @*TreeView*@
+                            <div class="sideView">
+                                @Html.Raw(ViewBag.SideBar)
                             </div>
-                            <a class="mdl-navigation__link" href="ui-components.html">
-                                <i class="material-icons">developer_board</i>
-                                Components
-                            </a>
-                            <a class="mdl-navigation__link" href="forms.html">
-                                <i class="material-icons" role="presentation">person</i>
-                                Account
-                            </a>
-                            <a class="mdl-navigation__link" href="maps.html">
-                                <i class="material-icons" role="presentation">map</i>
-                                Maps
-                            </a>
-                            <a class="mdl-navigation__link" href="charts.html">
-                                <i class="material-icons">multiline_chart</i>
-                                Charts
-                            </a>
-                            <div class="sub-navigation">
-                                <a class="mdl-navigation__link">
-                                    <i class="material-icons">pages</i>
-                                    Pages
-                                    <i class="material-icons">keyboard_arrow_down</i>
-                                </a>
-                                <div class="mdl-navigation">
-                                    <a class="mdl-navigation__link" href="login.html">
-                                        Sign in
-                                    </a>
-                                    <a class="mdl-navigation__link" href="sign-up.html">
-                                        Sign up
-                                    </a>
-                                    <a class="mdl-navigation__link" href="forgot-password.html">
-                                        Forgot password
-                                    </a>
-                                    <a class="mdl-navigation__link" href="404.html">
-                                        404
-                                    </a>
-                                </div>
-                            </div>
+                            @*TreeView*@
                             <div class="mdl-layout-spacer"></div>
                             <hr>
                             <a class="mdl-navigation__link" href="https://github.com/CreativeIT/getmdl-dashboard">
@@ -214,6 +105,8 @@
     <script src="~/Areas/Backend/js/widgets/pie-chart/pie-charts-nvd3.min.js"></script>
     <script src="~/Areas/Backend/js/widgets/table/table.min.js"></script>
     <script src="~/Areas/Backend/js/widgets/todo/todo.min.js"></script>
+    <script src="~/Scripts/dist/tree.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -239,6 +132,25 @@
                 });
             }
         });
+    </script>
+
+    <script>
+    // prettier-ignore
+    let data = @Html.Raw(ViewBag.SideBar)
+    let tree = new Tree('.sideView', {
+        data: [{ id: '-1', text: '所有權限', children: data }],
+        closeDepth: 3,
+        loaded: function () {
+            //this.values = [@Html.Raw(ViewBag.permissionData)];
+            console.log(this.selectedNodes);
+            console.log(this.values);
+            //this.disables = ['0-0-0', '0-0-1', '0-0-2']
+        },
+        onChange: function () {
+            $("#Permissions").val(this.values);
+            console.log(this.values);
+        }
+    })
     </script>
 </body>
 </html>
