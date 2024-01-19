@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Principal;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -22,9 +24,13 @@ namespace IAAI.Areas.Backend.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var userData = Utility.GetAuthenData(User.Identity);
-                ViewBag.UserName = userData.userName;
-                ViewBag.SideBar = userData.permissions;
+                var userInfo = Utility.GetAuthenData(User.Identity);
+                ViewBag.UserName = userInfo.userName;
+
+                // 取得 SideBar 的 TreeView
+                int userId = int.Parse(userInfo.userId);
+                string sideBar = Utility.GetSideBar(userId);
+                ViewBag.SideBar = sideBar;
             }
 
             return View(db.News.ToList());
@@ -134,5 +140,57 @@ namespace IAAI.Areas.Backend.Controllers
             }
             base.Dispose(disposing);
         }
+
+        #region "取得側邊權限樹狀圖"
+
+        private void GetSideBar(List<Permissions> permissionsList, StringBuilder sb, string[] userPermiss)
+        {
+            foreach (Permissions Permission in permissionsList)
+            {
+                sb.Append("<div class=\"sub-navigation\">");
+                sb.Append("<a class=\"mdl-navigation__link\">");
+                sb.Append("<i class=\"material-icons\">person</i>");
+                sb.Append(Permission.Subject);
+                sb.Append("<i class=\"material-icons\">keyboard_arrow_down</i>");
+                sb.Append("</a>");
+
+                // 判斷使用者有哪些子權限
+                var filteredChildren = Permission.Children.Where(child => userPermiss.Contains(child.Value)).ToList();
+
+                if (filteredChildren.Count > 0)
+                {
+                    sb.Append("<div class=\"mdl-navigation\">");
+                    GetSubNode(filteredChildren, sb, userPermiss);
+                    sb.Append("</div>");
+                }
+
+                sb.Append("</div>");
+            }
+        }
+
+        #endregion "取得側邊權限樹狀圖"
+
+        #region "取得子節點"
+
+        private void GetSubNode(List<Permissions> permissionsList, StringBuilder sb, string[] userPermiss)
+        {
+            foreach (Permissions Permission in permissionsList)
+            {
+                sb.Append("<a class=\"mdl-navigation__link\" href=\"login.html\">");
+                sb.Append(Permission.Subject);
+
+                // 判斷使用者有哪些子權限
+                var filteredChildren = Permission.Children.Where(child => userPermiss.Contains(child.Value)).ToList();
+
+                if (filteredChildren.Count > 0)
+                {
+                    GetSubNode(filteredChildren, sb, userPermiss);
+                }
+
+                sb.Append("</a>");
+            }
+        }
+
+        #endregion "取得子節點"
     }
 }

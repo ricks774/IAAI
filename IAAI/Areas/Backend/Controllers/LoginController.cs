@@ -73,10 +73,11 @@ namespace IAAI.Areas.Backend.Controllers
                     string permission = sb.ToString();
 
                     // 密碼正確，設定身份驗證 Cookie，儲存使用者名稱、Id、跟權限 *cookie有大小限制4096*
-                    Utility.SetAuthenTicket(userData.Name, userData.Id.ToString(), permission);
+                    //Utility.SetAuthenTicket(userData.Name, userData.Id.ToString(), permission);
+                    Utility.SetAuthenTicket(userData.Name, userData.Id.ToString());
 
                     // 導向到指定的頁面
-                    return RedirectToAction("Index", "Account");
+                    return RedirectToAction("Index", "News");
                 }
                 else
                 {
