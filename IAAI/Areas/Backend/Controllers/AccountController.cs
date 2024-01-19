@@ -22,9 +22,13 @@ namespace IAAI.Areas.Backend.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var userData = Utility.GetAuthenData(User.Identity);
-                ViewBag.UserName = userData.userName;
-                ViewBag.SideBar = userData.permissions;
+                var userInfo = Utility.GetAuthenData(User.Identity);
+                ViewBag.UserName = userInfo.userName;
+
+                // 取得 SideBar 的 TreeView
+                int userId = int.Parse(userInfo.userId);
+                string sideBar = Utility.GetSideBar(userId);
+                ViewBag.SideBar = sideBar;
             }
 
             return View(db.Users.ToList());

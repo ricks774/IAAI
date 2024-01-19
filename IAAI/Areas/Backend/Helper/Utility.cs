@@ -12,8 +12,6 @@ namespace MVC0917.Models
 {
     public class Utility
     {
-        private IAAIDBContent db = new IAAIDBContent();
-
         #region "密碼加密"
 
         public const int DefaultSaltSize = 5;
@@ -53,20 +51,35 @@ namespace MVC0917.Models
         /// </summary>
         /// <param name="userData">使用者資料</param>
         /// <param name="userId">UserAccount</param>
-        public static void SetAuthenTicket(string userData, string userId, string customData)
-        {
-            // 將自定義資料附加到 userData 中
-            string userDataWithCustomData = $"{userData}|{customData}";
+        ///
 
+        public static void SetAuthenTicket(string userData, string userId)
+        {
             //宣告一個驗證票
-            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, userId, DateTime.Now, DateTime.Now.AddHours(3), false, userDataWithCustomData);
+            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, userId, DateTime.Now, DateTime.Now.AddHours(3), false, userData);
             //加密驗證票
             string encryptedTicket = FormsAuthentication.Encrypt(ticket);
             //建立Cookie
             HttpCookie authenticationcookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
             //將Cookie寫入回應
+
             HttpContext.Current.Response.Cookies.Add(authenticationcookie);
         }
+
+        //public static void SetAuthenTicket(string userData, string userId, string customData)
+        //{
+        //    // 將自定義資料附加到 userData 中
+        //    string userDataWithCustomData = $"{userData}|{customData}";
+
+        //    //宣告一個驗證票
+        //    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, userId, DateTime.Now, DateTime.Now.AddHours(3), false, userDataWithCustomData);
+        //    //加密驗證票
+        //    string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+        //    //建立Cookie
+        //    HttpCookie authenticationcookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+        //    //將Cookie寫入回應
+        //    HttpContext.Current.Response.Cookies.Add(authenticationcookie);
+        //}
 
         #endregion "將使用者資料寫入cookie,產生AuthenTicket"
 
@@ -126,19 +139,103 @@ namespace MVC0917.Models
 
         #region"取得票證資料"
 
-        public static (string userId, string userName, string permissions) GetAuthenData(System.Security.Principal.IIdentity identity)
+        public static (string userId, string userName) GetAuthenData(System.Security.Principal.IIdentity identity)
         {
-            string userId = identity.Name; // 取得使用者Id
-            string userData = ((FormsIdentity)identity).Ticket.UserData;   // 取得使用者資料
-
-            // 解析資料，使用者資料格式為 "userName | permissions"
-            string[] userDataParts = userData.Split('|');
-
-            string userName = userDataParts.Length > 0 ? userDataParts[0] : string.Empty;
-            string permissions = userDataParts.Length > 1 ? userDataParts[1] : string.Empty;
-
-            return (userId, userName, permissions);
+            string userId = identity.Name; // 會取得使用者Id
+            string userName = ((FormsIdentity)identity).Ticket.UserData;   // 取得使用者名稱
+            return (userId, userName);
         }
+
+        //public static (string userId, string userName, string permissions) GetAuthenData(System.Security.Principal.IIdentity identity)
+        //{
+        //    string userId = identity.Name; // 取得使用者Id
+        //    string userData = ((FormsIdentity)identity).Ticket.UserData;   // 取得使用者資料
+
+        //    // 解析資料，使用者資料格式為 "userName | permissions"
+        //    string[] userDataParts = userData.Split('|');
+
+        //    string userName = userDataParts.Length > 0 ? userDataParts[0] : string.Empty;
+        //    string permissions = userDataParts.Length > 1 ? userDataParts[1] : string.Empty;
+
+        //    return (userId, userName, permissions);
+        //}
+
+        #endregion
+
+        #region "取得 SideBar"
+
+        public static string GetSideBar(int userId)
+        {
+            IAAIDBContent db = new IAAIDBContent();
+
+            // 設定TreeView
+            var userData = db.Users.Where(u => u.Id == userId).FirstOrDefault();
+            List<Permissions> permissions = db.Permissions.ToList();
+            StringBuilder sb = new StringBuilder();
+            string[] userPermiss = userData.Permissions.Split(',');
+            var permissIdData = db.Permissions
+                    .Where(p => userPermiss.Contains(p.Value))
+                    .Select(p => p.ParentId)
+                    .Distinct()
+                    .ToList();
+            List<Permissions> root = permissions.Where(p => permissIdData.Contains(p.Id)).ToList();   // 找出主要節點
+
+            GetTree(root, sb, userPermiss);
+            string permission = sb.ToString();
+            return permission;
+        }
+
+        #region "取得側邊權限樹狀圖"
+
+        private static void GetTree(List<Permissions> permissionsList, StringBuilder sb, string[] userPermiss)
+        {
+            foreach (Permissions Permission in permissionsList)
+            {
+                sb.Append("<div class=\"sub-navigation\">");
+                sb.Append("<a class=\"mdl-navigation__link\">");
+                sb.Append("<i class=\"material-icons\">person</i>");
+                sb.Append(Permission.Subject);
+                sb.Append("<i class=\"material-icons\">keyboard_arrow_down</i>");
+                sb.Append("</a>");
+
+                // 判斷使用者有哪些子權限
+                var filteredChildren = Permission.Children.Where(child => userPermiss.Contains(child.Value)).ToList();
+
+                if (filteredChildren.Count > 0)
+                {
+                    sb.Append("<div class=\"mdl-navigation\">");
+                    GetSubNode(filteredChildren, sb, userPermiss);
+                    sb.Append("</div>");
+                }
+
+                sb.Append("</div>");
+            }
+        }
+
+        #endregion "取得側邊權限樹狀圖"
+
+        #region "取得子節點"
+
+        private static void GetSubNode(List<Permissions> permissionsList, StringBuilder sb, string[] userPermiss)
+        {
+            foreach (Permissions Permission in permissionsList)
+            {
+                sb.Append("<a class=\"mdl-navigation__link\" href=\"login.html\">");
+                sb.Append(Permission.Subject);
+
+                // 判斷使用者有哪些子權限
+                var filteredChildren = Permission.Children.Where(child => userPermiss.Contains(child.Value)).ToList();
+
+                if (filteredChildren.Count > 0)
+                {
+                    GetSubNode(filteredChildren, sb, userPermiss);
+                }
+
+                sb.Append("</a>");
+            }
+        }
+
+        #endregion "取得子節點"
 
         #endregion
     }
