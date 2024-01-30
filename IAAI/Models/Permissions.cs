@@ -30,6 +30,9 @@ namespace IAAI.Models
         [ForeignKey("ParentId")]
         public virtual Permissions Parent { get; set; }
 
+        [Display(Name = "頁面")]
+        public string Page { get; set; }
+
         public virtual List<Permissions> Children { get; set; }
     }
 }

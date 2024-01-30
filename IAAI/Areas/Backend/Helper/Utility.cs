@@ -220,7 +220,7 @@ namespace MVC0917.Models
         {
             foreach (Permissions Permission in permissionsList)
             {
-                sb.Append("<a class=\"mdl-navigation__link\" href=\"login.html\">");
+                sb.Append($"<a class=\"mdl-navigation__link\" href=\"{Permission.Page}\">");
                 sb.Append(Permission.Subject);
 
                 // 判斷使用者有哪些子權限
