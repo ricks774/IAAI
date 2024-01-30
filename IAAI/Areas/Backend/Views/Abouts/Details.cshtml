@@ -5,6 +5,14 @@
     Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
 }
 
+@section styles{
+    <style>
+        body {
+            color: #f4f4f4;
+        }
+    </style>
+}
+
 <h2>Details</h2>
 
 <div>
@@ -42,7 +50,6 @@
         <dd>
             @Html.DisplayFor(model => model.CreateDate)
         </dd>
-
     </dl>
 </div>
 <p>

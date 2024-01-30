@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -218,9 +219,13 @@ namespace MVC0917.Models
 
         private static void GetSubNode(List<Permissions> permissionsList, StringBuilder sb, string[] userPermiss)
         {
+            // 建立 urlHelper 來可以使用 Url.Action 的方法
+            var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+
             foreach (Permissions Permission in permissionsList)
             {
-                sb.Append($"<a class=\"mdl-navigation__link\" href=\"{Permission.Page}\">");
+                //sb.Append($"<a class=\"mdl-navigation__link\" href=\"{Permission.Page}\">");
+                sb.Append($"<a class=\"mdl-navigation__link\" href=\"{urlHelper.Action("Index", Permission.Page, new { area = "Backend" })}\">");
                 sb.Append(Permission.Subject);
 
                 // 判斷使用者有哪些子權限

@@ -15,6 +15,7 @@ namespace IAAI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [AllowHtml]
         [Display(Name = "關於我們")]
         public string AboutUs { get; set; }
 

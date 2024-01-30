@@ -141,10 +141,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202401300621233_add page.cs" />
-    <Compile Include="Migrations\202401300621233_add page.Designer.cs">
-      <DependentUpon>202401300621233_add page.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\About.cs" />
     <Compile Include="Models\IAAIDBContent.cs" />
@@ -226,12 +222,13 @@
     <Content Include="Areas\Backend\Views\Abouts\Index.cshtml" />
     <Content Include="Scripts\dist\tree.js.map" />
     <Content Include="Scripts\dist\tree.min.js.map" />
-    <Content Include="Areas\Backend\Views\Login\Login.cshtml" />
     <Content Include="Areas\Backend\Views\Account\Create.cshtml" />
     <Content Include="Areas\Backend\Views\Account\Delete.cshtml" />
     <Content Include="Areas\Backend\Views\Account\Details.cshtml" />
     <Content Include="Areas\Backend\Views\Account\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Backend\Views\Login\Login.cshtml" />
+    <Content Include="Areas\Backend\Views\Abouts\Index - 複製.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dist\tree.js" />
     <Content Include="Scripts\dist\tree.min.js" />
@@ -279,11 +276,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202401300621233_add page.resx">
-      <DependentUpon>202401300621233_add page.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
