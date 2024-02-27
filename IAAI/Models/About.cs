@@ -23,6 +23,7 @@ namespace IAAI.Models
         [Display(Name = "組織架構")]
         public string Organization { get; set; }
 
+        [AllowHtml]
         [Display(Name = "沿革")]
         public string History { get; set; }
 
