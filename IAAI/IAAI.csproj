@@ -135,6 +135,7 @@
     <Compile Include="Areas\Backend\Controllers\AccountController.cs" />
     <Compile Include="Areas\Backend\Controllers\LoginController.cs" />
     <Compile Include="Areas\Backend\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Backend\Controllers\OrganizationController.cs" />
     <Compile Include="Areas\Backend\Controllers\UsersController.cs" />
     <Compile Include="Areas\Backend\Helper\Utility.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -229,6 +230,11 @@
     <Content Include="Areas\Backend\Views\Account\Index.cshtml" />
     <Content Include="Areas\Backend\Views\Login\Login.cshtml" />
     <Content Include="Areas\Backend\Views\Abouts\Index - 複製.cshtml" />
+    <Content Include="Areas\Backend\Views\Organization\Create.cshtml" />
+    <Content Include="Areas\Backend\Views\Organization\Delete.cshtml" />
+    <Content Include="Areas\Backend\Views\Organization\Details.cshtml" />
+    <Content Include="Areas\Backend\Views\Organization\Edit.cshtml" />
+    <Content Include="Areas\Backend\Views\Organization\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dist\tree.js" />
     <Content Include="Scripts\dist\tree.min.js" />
