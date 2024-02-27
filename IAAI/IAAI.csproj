@@ -229,7 +229,6 @@
     <Content Include="Areas\Backend\Views\Account\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Account\Index.cshtml" />
     <Content Include="Areas\Backend\Views\Login\Login.cshtml" />
-    <Content Include="Areas\Backend\Views\Abouts\Index - 複製.cshtml" />
     <Content Include="Areas\Backend\Views\Organization\Create.cshtml" />
     <Content Include="Areas\Backend\Views\Organization\Delete.cshtml" />
     <Content Include="Areas\Backend\Views\Organization\Details.cshtml" />
