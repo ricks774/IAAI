@@ -13,12 +13,12 @@
     </style>
 }
 
-<h2 style="color:#f4f4f4">關於我們</h2>
+<h2>沿革</h2>
 
 <p>
     @Html.ActionLink("編輯訊息", "Edit", new { id = 1 }, new { style = "color: #00bcd4;" })
 </p>
 
 <div class="col-md-6">
-    @Html.Raw(Model.First().AboutUs)
+    @Html.Raw(Model.First().History)
 </div>

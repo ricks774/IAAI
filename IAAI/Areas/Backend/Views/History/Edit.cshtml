@@ -1,0 +1,114 @@
+﻿@model IAAI.Models.About
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    @*<script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>*@
+
+    @*<script>
+            ClassicEditor
+                .create(document.querySelector('#editor-about'))
+                .then(editor => {
+                    editor.setData(document.querySelector('#AboutUs').value);
+                    editor.model.document.on('change', () => {
+                        document.querySelector('#AboutUs').value = editor.getData();
+                    });
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>*@
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/decoupled-document/ckeditor.js"></script>
+    <script>
+        DecoupledEditor
+            .create(document.querySelector('#editor-about'))
+            .then(editor => {
+                const toolbarContainer = document.querySelector('#toolbar-container');
+
+                // 將編輯器的工具欄附加到指定的容器上
+                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+
+                // 設置讀取到的資料
+                editor.setData(document.querySelector('#History').value);
+
+                // 監聽編輯器內容的變化，並將其更新到資料庫
+                editor.model.document.on('change', () => {
+                    document.querySelector('#History').value = editor.getData();
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}
+
+<h2 style="color:#f4f4f4">沿革</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 style="color:#f4f4f4">編輯</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="col-md-10" style="background-color: white">
+            <div id="toolbar-container"></div>
+            <div id="editor-about">
+                @Html.EditorFor(model => model.History, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.History, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.AboutUs, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.AboutUs, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AboutUs, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Organization, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.Organization, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Organization, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.History, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                <div id="toolbar-container"></div>
+                <div id="editor-about">
+                    @Html.HiddenFor(model => model.History, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.History, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.CreateDate, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.CreateDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

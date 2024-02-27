@@ -11,9 +11,9 @@
         ClassicEditor
             .create(document.querySelector('#editor-about'))
             .then(editor => {
-                editor.setData(document.querySelector('#AboutUs').value);
+                editor.setData(document.querySelector('#Organization').value);
                 editor.model.document.on('change', () => {
-                    document.querySelector('#AboutUs').value = editor.getData();
+                    document.querySelector('#Organization').value = editor.getData();
                 });
             })
             .catch(error => {
