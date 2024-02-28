@@ -134,6 +134,7 @@
     <Compile Include="Areas\Backend\BackendAreaRegistration.cs" />
     <Compile Include="Areas\Backend\Controllers\AboutsController.cs" />
     <Compile Include="Areas\Backend\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Backend\Controllers\CertifiedController.cs" />
     <Compile Include="Areas\Backend\Controllers\HistoryController.cs" />
     <Compile Include="Areas\Backend\Controllers\LoginController.cs" />
     <Compile Include="Areas\Backend\Controllers\NewsController.cs" />
@@ -143,6 +144,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202402280210383_update AboutUs.cs" />
+    <Compile Include="Migrations\202402280210383_update AboutUs.Designer.cs">
+      <DependentUpon>202402280210383_update AboutUs.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\About.cs" />
@@ -241,6 +246,11 @@
     <Content Include="Areas\Backend\Views\History\Details.cshtml" />
     <Content Include="Areas\Backend\Views\History\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\History\Index.cshtml" />
+    <Content Include="Areas\Backend\Views\Certified\Create.cshtml" />
+    <Content Include="Areas\Backend\Views\Certified\Delete.cshtml" />
+    <Content Include="Areas\Backend\Views\Certified\Details.cshtml" />
+    <Content Include="Areas\Backend\Views\Certified\Edit.cshtml" />
+    <Content Include="Areas\Backend\Views\Certified\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dist\tree.js" />
     <Content Include="Scripts\dist\tree.min.js" />
@@ -288,6 +298,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202402280210383_update AboutUs.resx">
+      <DependentUpon>202402280210383_update AboutUs.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
