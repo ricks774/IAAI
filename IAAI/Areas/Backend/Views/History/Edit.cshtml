@@ -6,22 +6,6 @@
 }
 
 @section scripts {
-    @*<script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>*@
-
-    @*<script>
-            ClassicEditor
-                .create(document.querySelector('#editor-about'))
-                .then(editor => {
-                    editor.setData(document.querySelector('#AboutUs').value);
-                    editor.model.document.on('change', () => {
-                        document.querySelector('#AboutUs').value = editor.getData();
-                    });
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        </script>*@
-
     <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/decoupled-document/ckeditor.js"></script>
     <script>
         DecoupledEditor
@@ -46,6 +30,36 @@
     </script>
 }
 
+@section styles{
+    <style>
+        .document-editor {
+            border: 1px solid var(--ck-color-base-border);
+            border-radius: var(--ck-border-radius);
+            /* Set vertical boundaries for the document editor. */
+            max-height: 700px;
+            /* This element is a flex container for easier rendering. */
+            display: flex;
+            flex-flow: column nowrap;
+            background-color: white;
+        }
+
+        .document-editor__toolbar {
+            /* Make sure the toolbar container is always above the editable. */
+            z-index: 1;
+            /* Create the illusion of the toolbar floating over the editable. */
+            box-shadow: 0 0 5px hsla( 0,0%,0%,.2 );
+            /* Use the CKEditor CSS variables to keep the UI consistent. */
+            border-bottom: 1px solid var(--ck-color-toolbar-border);
+        }
+
+            /* Adjust the look of the toolbar inside the container. */
+            .document-editor__toolbar .ck-toolbar {
+                border: 0;
+                border-radius: 0;
+            }
+    </style>
+}
+
 <h2 style="color:#f4f4f4">沿革</h2>
 
 @using (Html.BeginForm())
@@ -58,11 +72,13 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
-        <div class="col-md-10" style="background-color: white">
-            <div id="toolbar-container"></div>
-            <div id="editor-about">
-                @Html.EditorFor(model => model.History, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.History, "", new { @class = "text-danger" })
+        <div class="col-md-10">
+            <div class="document-editor">
+                <div id="toolbar-container"></div>
+                <div id="editor-about">
+                    @Html.EditorFor(model => model.History, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.History, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
 
@@ -94,6 +110,22 @@
         </div>
 
         <div class="form-group">
+            @*@Html.LabelFor(model => model.Certified, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.Certified, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Certified, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.Expert, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.Expert, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Expert, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @*@Html.LabelFor(model => model.CreateDate, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
                 @Html.HiddenFor(model => model.CreateDate, new { htmlAttributes = new { @class = "form-control" } })
@@ -102,7 +134,7 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
