@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IAAI.Models;
 using MVC0917.Models;
+using ImageResizer;
 
 namespace IAAI.Areas.Backend.Controllers
 {
-    public class CertifiedController : Controller
+    public class CertifiedMembersController : Controller
     {
         private IAAIDBContent db = new IAAIDBContent();
 
-        // GET: Backend/Certified
+        // GET: Backend/CertifiedMembers
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
@@ -28,100 +30,118 @@ namespace IAAI.Areas.Backend.Controllers
                 string sideBar = Utility.GetSideBar(userId);
                 ViewBag.SideBar = sideBar;
             }
-            return View(db.Abouts.ToList());
+            return View(db.CertifiedMembers.ToList());
         }
 
-        // GET: Backend/Certified/Details/5
+        // GET: Backend/CertifiedMembers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            About about = db.Abouts.Find(id);
-            if (about == null)
+            CertifiedMember certifiedMember = db.CertifiedMembers.Find(id);
+            if (certifiedMember == null)
             {
                 return HttpNotFound();
             }
-            return View(about);
+            return View(certifiedMember);
         }
 
-        // GET: Backend/Certified/Create
+        // GET: Backend/CertifiedMembers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Backend/Certified/Create
+        // POST: Backend/CertifiedMembers/Create
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,AboutUs,Organization,History,Certified,Expert,CreateDate")] About about)
+        public ActionResult Create([Bind(Include = "Id,Picture,FirstName,LastName,Country,Title,Company,CreateDate")] CertifiedMember certifiedMember, HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
-                db.Abouts.Add(about);
+                if (ImageFile != null && ImageFile.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(ImageFile.FileName);
+
+                    // 取得圖片的副檔名
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    // 組合新的檔名：原始檔名 + 現在時間（年月日時分秒毫秒） + 副檔名
+                    fileName = DateTime.Now.ToString("yyMMddHHmmssfff") + extension;
+                    // 組合完整的檔案路徑(局對路徑_實際儲存檔案)
+                    string saveAsPath = Path.Combine(Server.MapPath("~/Uploads/CertifiedMember"), fileName);
+                    // 儲存到資料庫的路徑 (相對路徑)
+                    string sqlPath = $"/Uploads/CertifiedMember/{fileName}";
+
+                    // 調整圖片大小並保存
+                    ImageBuilder.Current.Build(ImageFile.InputStream, saveAsPath, new ResizeSettings("width=200&height=200&mode=max"));
+
+                    certifiedMember.Picture = sqlPath;
+                }
+                db.CertifiedMembers.Add(certifiedMember);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(about);
+            return View(certifiedMember);
         }
 
-        // GET: Backend/Certified/Edit/5
+        // GET: Backend/CertifiedMembers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            About about = db.Abouts.Find(id);
-            if (about == null)
+            CertifiedMember certifiedMember = db.CertifiedMembers.Find(id);
+            if (certifiedMember == null)
             {
                 return HttpNotFound();
             }
-            return View(about);
+            return View(certifiedMember);
         }
 
-        // POST: Backend/Certified/Edit/5
+        // POST: Backend/CertifiedMembers/Edit/5
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,AboutUs,Organization,History,Certified,Expert,CreateDate")] About about)
+        public ActionResult Edit([Bind(Include = "Id,Picture,FirstName,LastName,Country,Title,Company,CreateDate")] CertifiedMember certifiedMember)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(about).State = EntityState.Modified;
+                db.Entry(certifiedMember).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(about);
+            return View(certifiedMember);
         }
 
-        // GET: Backend/Certified/Delete/5
+        // GET: Backend/CertifiedMembers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            About about = db.Abouts.Find(id);
-            if (about == null)
+            CertifiedMember certifiedMember = db.CertifiedMembers.Find(id);
+            if (certifiedMember == null)
             {
                 return HttpNotFound();
             }
-            return View(about);
+            return View(certifiedMember);
         }
 
-        // POST: Backend/Certified/Delete/5
+        // POST: Backend/CertifiedMembers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            About about = db.Abouts.Find(id);
-            db.Abouts.Remove(about);
+            CertifiedMember certifiedMember = db.CertifiedMembers.Find(id);
+            db.CertifiedMembers.Remove(certifiedMember);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
