@@ -66,20 +66,18 @@ namespace IAAI.Areas.Backend.Controllers
                 if (ImageFile != null && ImageFile.ContentLength > 0)
                 {
                     string fileName = Path.GetFileName(ImageFile.FileName);
-
                     // 取得圖片的副檔名
                     string extension = Path.GetExtension(ImageFile.FileName);
-                    // 組合新的檔名：原始檔名 + 現在時間（年月日時分秒毫秒） + 副檔名
+                    // 組合新的檔名：現在時間（年月日時分秒毫秒） + 副檔名
                     fileName = DateTime.Now.ToString("yyMMddHHmmssfff") + extension;
-                    // 組合完整的檔案路徑(局對路徑_實際儲存檔案)
+                    // 組合完整的檔案路徑 (絕對路徑_實際儲存檔案)
                     string saveAsPath = Path.Combine(Server.MapPath("~/Uploads/CertifiedMember"), fileName);
                     // 儲存到資料庫的路徑 (相對路徑)
                     string sqlPath = $"/Uploads/CertifiedMember/{fileName}";
-
-                    // 調整圖片大小並保存
-                    ImageBuilder.Current.Build(ImageFile.InputStream, saveAsPath, new ResizeSettings("width=200&height=200&mode=max"));
-
                     certifiedMember.Picture = sqlPath;
+
+                    // 使用 ImageResizer 套件來調整圖片大小並保存
+                    ImageBuilder.Current.Build(ImageFile.InputStream, saveAsPath, new ResizeSettings("width=200&height=200&mode=max"));
                 }
                 db.CertifiedMembers.Add(certifiedMember);
                 db.SaveChanges();
