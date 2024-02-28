@@ -27,6 +27,13 @@ namespace IAAI.Models
         [Display(Name = "沿革")]
         public string History { get; set; }
 
+        [AllowHtml]
+        [Display(Name = "配證會員")]
+        public string Certified { get; set; }
+
+        [Display(Name = "專家介紹")]
+        public string Expert { get; set; }
+
         [Display(Name = "建立時間")]
         public DateTime CreateDate { get; set; } = DateTime.Now;
     }
