@@ -31,6 +31,7 @@ namespace IAAI.Models
         [Display(Name = "配證會員")]
         public string Certified { get; set; }
 
+        [AllowHtml]
         [Display(Name = "專家介紹")]
         public string Expert { get; set; }
 
