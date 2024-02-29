@@ -54,6 +54,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ImageResizer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ImageResizer.4.2.8\lib\net45\ImageResizer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -134,7 +137,7 @@
     <Compile Include="Areas\Backend\BackendAreaRegistration.cs" />
     <Compile Include="Areas\Backend\Controllers\AboutsController.cs" />
     <Compile Include="Areas\Backend\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Backend\Controllers\CertifiedController.cs" />
+    <Compile Include="Areas\Backend\Controllers\CertifiedMembersController.cs" />
     <Compile Include="Areas\Backend\Controllers\ExpertController.cs" />
     <Compile Include="Areas\Backend\Controllers\HistoryController.cs" />
     <Compile Include="Areas\Backend\Controllers\LoginController.cs" />
@@ -150,8 +153,13 @@
     <Compile Include="Migrations\202402280210383_update AboutUs.Designer.cs">
       <DependentUpon>202402280210383_update AboutUs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202402280727287_add CertifiedMember Model.cs" />
+    <Compile Include="Migrations\202402280727287_add CertifiedMember Model.Designer.cs">
+      <DependentUpon>202402280727287_add CertifiedMember Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\About.cs" />
+    <Compile Include="Models\CertifiedMember.cs" />
     <Compile Include="Models\IAAIDBContent.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Permissions.cs" />
@@ -247,11 +255,11 @@
     <Content Include="Areas\Backend\Views\History\Details.cshtml" />
     <Content Include="Areas\Backend\Views\History\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\History\Index.cshtml" />
-    <Content Include="Areas\Backend\Views\Certified\Create.cshtml" />
-    <Content Include="Areas\Backend\Views\Certified\Delete.cshtml" />
-    <Content Include="Areas\Backend\Views\Certified\Details.cshtml" />
-    <Content Include="Areas\Backend\Views\Certified\Edit.cshtml" />
-    <Content Include="Areas\Backend\Views\Certified\Index.cshtml" />
+    <Content Include="Areas\Backend\Views\CertifiedMembers\Create.cshtml" />
+    <Content Include="Areas\Backend\Views\CertifiedMembers\Delete.cshtml" />
+    <Content Include="Areas\Backend\Views\CertifiedMembers\Details.cshtml" />
+    <Content Include="Areas\Backend\Views\CertifiedMembers\Edit.cshtml" />
+    <Content Include="Areas\Backend\Views\CertifiedMembers\Index.cshtml" />
     <Content Include="Areas\Backend\Views\Expert\Create.cshtml" />
     <Content Include="Areas\Backend\Views\Expert\Delete.cshtml" />
     <Content Include="Areas\Backend\Views\Expert\Details.cshtml" />
@@ -288,6 +296,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Backend\Data\" />
+    <Folder Include="Uploads\CertifiedMember\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -308,6 +317,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202402280210383_update AboutUs.resx">
       <DependentUpon>202402280210383_update AboutUs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402280727287_add CertifiedMember Model.resx">
+      <DependentUpon>202402280727287_add CertifiedMember Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

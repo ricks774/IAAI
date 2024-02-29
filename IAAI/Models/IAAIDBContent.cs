@@ -16,6 +16,7 @@ namespace IAAI.Models
         public virtual DbSet<About> Abouts { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Permissions> Permissions { get; set; }
+        public virtual DbSet<CertifiedMember> CertifiedMembers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
