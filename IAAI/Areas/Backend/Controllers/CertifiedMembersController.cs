@@ -107,10 +107,35 @@ namespace IAAI.Areas.Backend.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Picture,FirstName,LastName,Country,Title,Company,CreateDate")] CertifiedMember certifiedMember)
+        public ActionResult Edit([Bind(Include = "Id,Picture,FirstName,LastName,Country,Title,Company,CreateDate")] CertifiedMember certifiedMember, HttpPostedFileBase ImageFile)
         {
             if (ModelState.IsValid)
             {
+                // 刪除舊的圖片
+                string filePath = Server.MapPath(certifiedMember.Picture);
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
+
+                // 新增圖片
+                if (ImageFile != null && ImageFile.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(ImageFile.FileName);
+                    // 取得圖片的副檔名
+                    string extension = Path.GetExtension(ImageFile.FileName);
+                    // 組合新的檔名：現在時間（年月日時分秒毫秒） + 副檔名
+                    fileName = DateTime.Now.ToString("yyMMddHHmmssfff") + extension;
+                    // 組合完整的檔案路徑 (絕對路徑_實際儲存檔案)
+                    string saveAsPath = Path.Combine(Server.MapPath("~/Uploads/CertifiedMember"), fileName);
+                    // 儲存到資料庫的路徑 (相對路徑)
+                    string sqlPath = $"/Uploads/CertifiedMember/{fileName}";
+                    certifiedMember.Picture = sqlPath;
+
+                    // 使用 ImageResizer 套件來調整圖片大小並保存
+                    ImageBuilder.Current.Build(ImageFile.InputStream, saveAsPath, new ResizeSettings("width=200&height=200&mode=max"));
+                }
+
                 db.Entry(certifiedMember).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -139,6 +164,15 @@ namespace IAAI.Areas.Backend.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             CertifiedMember certifiedMember = db.CertifiedMembers.Find(id);
+
+            // 刪除圖片
+            string filePath = Server.MapPath(certifiedMember.Picture);
+
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
+
             db.CertifiedMembers.Remove(certifiedMember);
             db.SaveChanges();
             return RedirectToAction("Index");
