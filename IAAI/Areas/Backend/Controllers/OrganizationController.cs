@@ -16,6 +16,7 @@ namespace IAAI.Areas.Backend.Controllers
         private IAAIDBContent db = new IAAIDBContent();
 
         // GET: Backend/Organization
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Abouts.ToList());
