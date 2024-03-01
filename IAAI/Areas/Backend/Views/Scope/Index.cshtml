@@ -5,54 +5,20 @@
     Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Scope)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Accreditation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Consult)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Investigation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Scope)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Accreditation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Consult)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Investigation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@section styles{
+    <style>
+        body {
+            color: #f4f4f4;
+        }
+    </style>
 }
 
-</table>
+<h2>協會業務</h2>
+
+<p>
+    @Html.ActionLink("編輯訊息", "Edit", new { id = 1 }, new { style = "color: #00bcd4;" })
+</p>
+
+<div class="col-md-6">
+    @Html.Raw(Model.First().Scope)
+</div>
