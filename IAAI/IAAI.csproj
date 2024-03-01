@@ -157,8 +157,13 @@
     <Compile Include="Migrations\202402280727287_add CertifiedMember Model.Designer.cs">
       <DependentUpon>202402280727287_add CertifiedMember Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202403010640358_add Businss Model.cs" />
+    <Compile Include="Migrations\202403010640358_add Businss Model.designer.cs">
+      <DependentUpon>202403010640358_add Businss Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\About.cs" />
+    <Compile Include="Models\Business.cs" />
     <Compile Include="Models\CertifiedMember.cs" />
     <Compile Include="Models\IAAIDBContent.cs" />
     <Compile Include="Models\News.cs" />
@@ -320,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202402280727287_add CertifiedMember Model.resx">
       <DependentUpon>202402280727287_add CertifiedMember Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403010640358_add Businss Model.resx">
+      <DependentUpon>202403010640358_add Businss Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
