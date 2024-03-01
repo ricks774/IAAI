@@ -19,6 +19,7 @@ namespace IAAI.Models
         [Display(Name = "協會業務")]
         public string Scope { get; set; }
 
+        [AllowHtml]
         [Display(Name = "訓練、認證、發照")]
         public string Accreditation { get; set; }
 
