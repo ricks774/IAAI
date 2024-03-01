@@ -137,12 +137,14 @@
     <Compile Include="Areas\Backend\BackendAreaRegistration.cs" />
     <Compile Include="Areas\Backend\Controllers\AboutsController.cs" />
     <Compile Include="Areas\Backend\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Backend\Controllers\BaseController.cs" />
     <Compile Include="Areas\Backend\Controllers\CertifiedMembersController.cs" />
     <Compile Include="Areas\Backend\Controllers\ExpertController.cs" />
     <Compile Include="Areas\Backend\Controllers\HistoryController.cs" />
     <Compile Include="Areas\Backend\Controllers\LoginController.cs" />
     <Compile Include="Areas\Backend\Controllers\NewsController.cs" />
     <Compile Include="Areas\Backend\Controllers\OrganizationController.cs" />
+    <Compile Include="Areas\Backend\Controllers\ScopeController.cs" />
     <Compile Include="Areas\Backend\Controllers\UsersController.cs" />
     <Compile Include="Areas\Backend\Helper\Utility.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -270,6 +272,11 @@
     <Content Include="Areas\Backend\Views\Expert\Details.cshtml" />
     <Content Include="Areas\Backend\Views\Expert\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Expert\Index.cshtml" />
+    <Content Include="Areas\Backend\Views\Scope\Create.cshtml" />
+    <Content Include="Areas\Backend\Views\Scope\Delete.cshtml" />
+    <Content Include="Areas\Backend\Views\Scope\Details.cshtml" />
+    <Content Include="Areas\Backend\Views\Scope\Edit.cshtml" />
+    <Content Include="Areas\Backend\Views\Scope\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dist\tree.js" />
     <Content Include="Scripts\dist\tree.min.js" />
@@ -301,6 +308,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Backend\Data\" />
+    <Folder Include="Areas\Backend\Views\Base\" />
     <Folder Include="Uploads\CertifiedMember\" />
   </ItemGroup>
   <ItemGroup>
