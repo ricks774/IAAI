@@ -272,9 +272,6 @@
     <Content Include="Areas\Backend\Views\Expert\Details.cshtml" />
     <Content Include="Areas\Backend\Views\Expert\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Expert\Index.cshtml" />
-    <Content Include="Areas\Backend\Views\Scope\Create.cshtml" />
-    <Content Include="Areas\Backend\Views\Scope\Delete.cshtml" />
-    <Content Include="Areas\Backend\Views\Scope\Details.cshtml" />
     <Content Include="Areas\Backend\Views\Scope\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Scope\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -308,7 +305,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Backend\Data\" />
-    <Folder Include="Areas\Backend\Views\Base\" />
     <Folder Include="Uploads\CertifiedMember\" />
   </ItemGroup>
   <ItemGroup>

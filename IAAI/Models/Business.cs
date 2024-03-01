@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace IAAI.Models
 {
@@ -14,6 +15,7 @@ namespace IAAI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [AllowHtml]
         [Display(Name = "協會業務")]
         public string Scope { get; set; }
 
