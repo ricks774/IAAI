@@ -10,7 +10,7 @@ using IAAI.Models;
 
 namespace IAAI.Areas.Backend.Controllers
 {
-    public class ScopeController : Controller
+    public class ScopeController : BaseController
     {
         private IAAIDBContent db = new IAAIDBContent();
 

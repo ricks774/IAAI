@@ -14,7 +14,7 @@ using MVC0917.Models;
 
 namespace IAAI.Areas.Backend.Controllers
 {
-    public class NewsController : Controller
+    public class NewsController : BaseController
     {
         private IAAIDBContent db = new IAAIDBContent();
 
@@ -22,17 +22,6 @@ namespace IAAI.Areas.Backend.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                var userInfo = Utility.GetAuthenData(User.Identity);
-                ViewBag.UserName = userInfo.userName;
-
-                // 取得 SideBar 的 TreeView
-                int userId = int.Parse(userInfo.userId);
-                string sideBar = Utility.GetSideBar(userId);
-                ViewBag.SideBar = sideBar;
-            }
-
             return View(db.News.ToList());
         }
 

@@ -13,7 +13,7 @@ using MVC0917.Models;
 
 namespace IAAI.Areas.Backend.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
         private IAAIDBContent db = new IAAIDBContent();
 
