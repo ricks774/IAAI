@@ -143,6 +143,7 @@
     <Compile Include="Areas\Backend\Controllers\ConsultController.cs" />
     <Compile Include="Areas\Backend\Controllers\ExpertController.cs" />
     <Compile Include="Areas\Backend\Controllers\HistoryController.cs" />
+    <Compile Include="Areas\Backend\Controllers\InvestigationController.cs" />
     <Compile Include="Areas\Backend\Controllers\LoginController.cs" />
     <Compile Include="Areas\Backend\Controllers\NewsController.cs" />
     <Compile Include="Areas\Backend\Controllers\OrganizationController.cs" />
@@ -280,6 +281,8 @@
     <Content Include="Areas\Backend\Views\Accreditation\Index.cshtml" />
     <Content Include="Areas\Backend\Views\Consult\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Consult\Index.cshtml" />
+    <Content Include="Areas\Backend\Views\Investigation\Edit.cshtml" />
+    <Content Include="Areas\Backend\Views\Investigation\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dist\tree.js" />
     <Content Include="Scripts\dist\tree.min.js" />

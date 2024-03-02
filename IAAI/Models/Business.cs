@@ -27,6 +27,7 @@ namespace IAAI.Models
         [Display(Name = "諮詢、顧問")]
         public string Consult { get; set; }
 
+        [AllowHtml]
         [Display(Name = "縱火查詢")]
         public string Investigation { get; set; }
 
