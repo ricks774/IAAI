@@ -140,6 +140,7 @@
     <Compile Include="Areas\Backend\Controllers\AccreditationController.cs" />
     <Compile Include="Areas\Backend\Controllers\BaseController.cs" />
     <Compile Include="Areas\Backend\Controllers\CertifiedMembersController.cs" />
+    <Compile Include="Areas\Backend\Controllers\ConsultController.cs" />
     <Compile Include="Areas\Backend\Controllers\ExpertController.cs" />
     <Compile Include="Areas\Backend\Controllers\HistoryController.cs" />
     <Compile Include="Areas\Backend\Controllers\LoginController.cs" />
@@ -277,6 +278,8 @@
     <Content Include="Areas\Backend\Views\Scope\Index.cshtml" />
     <Content Include="Areas\Backend\Views\Accreditation\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Accreditation\Index.cshtml" />
+    <Content Include="Areas\Backend\Views\Consult\Edit.cshtml" />
+    <Content Include="Areas\Backend\Views\Consult\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dist\tree.js" />
     <Content Include="Scripts\dist\tree.min.js" />

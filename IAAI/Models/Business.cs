@@ -23,6 +23,7 @@ namespace IAAI.Models
         [Display(Name = "訓練、認證、發照")]
         public string Accreditation { get; set; }
 
+        [AllowHtml]
         [Display(Name = "諮詢、顧問")]
         public string Consult { get; set; }
 
