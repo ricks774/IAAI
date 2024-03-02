@@ -1,0 +1,24 @@
+﻿@model IEnumerable<IAAI.Models.Business>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <style>
+        body {
+            color: #f4f4f4;
+        }
+    </style>
+}
+
+<h2>縱火查詢</h2>
+
+<p>
+    @Html.ActionLink("編輯訊息", "Edit", new { id = 1 }, new { style = "color: #00bcd4;" })
+</p>
+
+<div class="col-md-6">
+    @Html.Raw(Model.First().Investigation)
+</div>
