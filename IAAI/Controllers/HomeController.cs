@@ -21,9 +21,7 @@ namespace IAAI.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return View(db.Abouts.ToList());
         }
 
         public ActionResult Contact()
