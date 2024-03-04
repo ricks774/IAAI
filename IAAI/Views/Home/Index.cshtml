@@ -2,30 +2,159 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+@model IEnumerable<IAAI.Models.News>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+@section styles{
+    <style>
+        .post-text {
+            max-height: 100px; /* 設定最大高度 */
+            overflow: hidden; /* 隱藏溢出的文字 */
+            white-space: nowrap; /* 避免文字換行 */
+            text-overflow: ellipsis; /* 文字溢出時顯示... */
+        }
+    </style>
+}
+
+<!-- Carousel -->
+<div id="main-slide" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ol class="carousel-indicators visible-lg visible-md">
+        <li data-target="#main-slide" data-slide-to="0" class="active"></li>
+        <li data-target="#main-slide" data-slide-to="1"></li>
+    </ol><!--/ Indicators end-->
+    <!-- Carousel inner -->
+    <div class="carousel-inner">
+        <div class="item active" style="background-image: url(/Scripts/Images/slider-main-01.jpg) ">
+        </div><!--/ Carousel item end -->
+
+        <div class="item" style="background-image: url(/Scripts/Images/slider-main-02.jpg) ">
+        </div><!--/ Carousel item end -->
+    </div><!-- Carousel inner end-->
+    <!-- Controllers -->
+    <a class="left carousel-control" href="#main-slide" data-slide="prev">
+        <span><i class="fa fa-angle-left"></i></span>
+    </a>
+    <a class="right carousel-control" href="#main-slide" data-slide="next">
+        <span><i class="fa fa-angle-right"></i></span>
+    </a>
+
+    <span class="down-arrow-transparent"></span>
+</div><!--/ Carousel end -->
+
+<section id="news" class="news">
+    <div class="container">
+
+        <div class="row">
+            @foreach (var news in Model)
+            {
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="latest-post">
+                        <img class="img-responsive" src="~/Scripts/Images/newsimg-01.jpg" alt="img">
+                        <div class="post-body">
+                            <h4 class="post-title">
+                                <a href="#">@news.Title</a>
+                            </h4>
+                            <span class="post-item-date">
+                                <i class="fa fa-clock-o"></i> @news.PubDate
+                            </span>
+                            <div class="post-text">
+                                <p>@Html.Raw(news.Content)</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary">More</a>
+                    </div><!-- Latest post end -->
+                </div><!-- post col end -->
+            }
+        </div><!--/ Content row end -->
+    </div><!--/ Container end -->
+</section><!--/ News end -->
+
+<section id="facts" class="facts no-padding">
+    <div class="fact-img">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12 fact-text">
+                    <ol>
+                        <li>從事火災調查之科技與學術研究，提昇我國火災調查科技研究水準，並落實研究成果。</li>
+                        <li>舉辦相關學術研討會及活動，提供技術資訊與發展之交流平台，參與並推動火災調查、預防及研究等之國內外交流活動。</li>
+                        <li>發行及出版火災調查、預防及研究等相關科技研究之學術刊物、書籍及媒體等。</li>
+                        <li>從事火災原因研究、危險因子診斷及災害預防等技術與系統之研發、相關資料庫之建立、及推廣和教育。</li>
+                        <li>提昇火災預防及調查專業人員之技術，並輔導會員取得國際證照。</li>
+                        <li>維護會員合法權益、端正會員職業道德與倫理、促進會員間之合作。</li>
+                        <li>關懷社會並維護社會公理正義。</li>
+                    </ol>
+                </div><!-- Col end -->
+            </div><!--/ Content row end -->
+        </div><!--/ Container end -->
+    </div><!--/ Container end -->
+</section><!-- Facts end -->
+
+<section id="partners-area" class="partners-area">
+    <div class="container">
+
+        <div class="row">
+            <div id="partners-carousel" class="col-sm-12 owl-carousel owl-theme text-center partners">
+                <figure class="item partner-logo">
+                    <a href="#">
+                        <img class="img-responsive" src="~/Scripts/Images/partner1.jpg" alt="client">
+                    </a>
+                </figure>
+
+                <figure class="item partner-logo">
+                    <a href="#">
+                        <img class="img-responsive" src="~/Scripts/Images/partner2.jpg" alt="client">
+                    </a>
+                </figure>
+
+                <figure class="item partner-logo">
+                    <a href="#">
+                        <img class="img-responsive" src="~/Scripts/Images/partner3.jpg" alt="client">
+                    </a>
+                </figure>
+
+                <figure class="item partner-logo">
+                    <a href="#">
+                        <img class="img-responsive" src="~/Scripts/Images/partner4.jpg" alt="client">
+                    </a>
+                </figure>
+
+                <figure class="item partner-logo">
+                    <a href="#">
+                        <img class="img-responsive" src="~/Scripts/Images/partner5.jpg" alt="client">
+                    </a>
+                </figure>
+
+                <figure class="item partner-logo">
+                    <a href="#">
+                        <img class="img-responsive" src="~/Scripts/Images/partner.jpg" alt="client">
+                    </a>
+                </figure>
+
+                <figure class="item partner-logo">
+                    <a href="#">
+                        <img class="img-responsive" src="~/Scripts/Images/partner2.jpg" alt="client">
+                    </a>
+                </figure>
+
+                <figure class="item partner-logo">
+                    <a href="#">
+                        <img class="img-responsive" src="~/Scripts/Images/partner3.jpg" alt="client">
+                    </a>
+                </figure>
+
+                <figure class="item partner-logo">
+                    <a href="#">
+                        <img class="img-responsive" src="~/Scripts/Images/partner4.jpg" alt="client">
+                    </a>
+                </figure>
+
+                <figure class="item partner-logo">
+                    <a href="#">
+                        <img class="img-responsive" src="~/Scripts/Images/partner5.jpg" alt="client">
+                    </a>
+                </figure>
+            </div><!--/ Owl carousel end -->
+        </div><!--/ Content row end -->
+    </div><!--/ Container end -->
+</section><!--/ Partners end -->
