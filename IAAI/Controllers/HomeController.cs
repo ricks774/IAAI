@@ -46,7 +46,7 @@ namespace IAAI.Controllers
 
         public ActionResult News()
         {
-            return View(db.News.AsEnumerable().ToList());
+            return View(db.News.ToList());
         }
     }
 }
