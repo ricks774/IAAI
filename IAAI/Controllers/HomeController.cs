@@ -38,5 +38,10 @@ namespace IAAI.Controllers
         {
             return View(db.Abouts.ToList());
         }
+
+        public ActionResult Expert()
+        {
+            return View(db.Abouts.ToList());
+        }
     }
 }
