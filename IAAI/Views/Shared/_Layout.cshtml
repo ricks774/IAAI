@@ -128,8 +128,48 @@
     </div>
     @RenderBody()
 
+    <!-- Footer start -->
+    <footer id="footer" class="footer">
+        <div class="container">
+
+            <div class="row copyright">
+                <div class="col-xs-12 col-sm-7">
+                    <div class="copyright-info">
+                        <span>
+                            國際縱火調查人員協會臺灣分會版權所有<br>
+                            Copyright © 2016 International Association of Arson Investigators Taiwan Chapter. All Rights Reserved.
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-push-1">
+
+                    <div class="footer-menu">
+                        <a class="btn btn-dark" href="#" title="財產權宣告">財產權宣告</a>
+                    </div>
+                </div>
+            </div><!-- Copyright end -->
+
+            <div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top affix">
+                <button class="btn btn-primary" title="Back to Top">
+                    <i class="fa fa-angle-double-up"></i>
+                </button>
+            </div>
+        </div><!--/ Container end -->
+    </footer><!-- Footer end -->
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Scripts/js/jquery.js")
+    @Scripts.Render("~/Scripts/js/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/js/owl.carousel.min.js")
+    @Scripts.Render("~/Scripts/js/jquery.counterup.min.js")
+    @Scripts.Render("~/Scripts/js/waypoints.min.js")
+    @Scripts.Render("~/Scripts/js/jquery.colorbox.js")
+    @Scripts.Render("~/Scripts/js/isotope.js")
+    @Scripts.Render("~/Scripts/js/ini.isotope.js")
+    @Scripts.Render("~/Scripts/js/gmap3.min.js")
+    @Scripts.Render("~/Scripts/js/custom.js")
 </body>
 </html>
