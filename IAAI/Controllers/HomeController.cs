@@ -33,5 +33,10 @@ namespace IAAI.Controllers
         {
             return View(db.Abouts.ToList());
         }
+
+        public ActionResult Certified()
+        {
+            return View(db.Abouts.ToList());
+        }
     }
 }

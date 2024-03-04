@@ -383,6 +383,7 @@
     <Content Include="Views\Home\History.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Organization.cshtml" />
+    <Content Include="Views\Home\Certified.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
