@@ -21,16 +21,27 @@ namespace IAAI.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return View(db.Abouts.ToList());
         }
 
-        public ActionResult Contact()
+        public ActionResult Organization()
         {
-            ViewBag.Message = "Your contact page.";
+            return View(db.Abouts.ToList());
+        }
 
-            return View();
+        public ActionResult History()
+        {
+            return View(db.Abouts.ToList());
+        }
+
+        public ActionResult Certified()
+        {
+            return View(db.Abouts.ToList());
+        }
+
+        public ActionResult Expert()
+        {
+            return View(db.Abouts.ToList());
         }
     }
 }

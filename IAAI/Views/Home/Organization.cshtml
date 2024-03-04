@@ -12,7 +12,7 @@
                     <ul class="breadcrumb">
                         <li>首頁</li>
                         <li>關於我們</li>
-                        <li><a href="#"> 協會介紹</a></li>
+                        <li><a href="#"> 組織架構</a></li>
                     </ul>
                 </div>
             </div>
@@ -30,8 +30,8 @@
                     <div class="widget">
                         <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>關於我們</h2>
                         <ul class="arrow nav nav-tabs nav-stacked">
-                            <li class="active"><a href="About">關於我們</a></li>
-                            <li><a href="Organization">組織架構</a></li>
+                            <li><a href="About">關於我們</a></li>
+                            <li class="active"><a href="Organization">組織架構</a></li>
                             <li><a href="History">沿革</a></li>
                             <li><a href="Certified">配證會員</a></li>
                             <li><a href="Expert">專家介紹</a></li>
@@ -42,12 +42,12 @@
 
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
 
-                <h2 class="page-title">關於我們</h2>
+                <h2 class="page-title">組織架構</h2>
                 <hr class="botmargin-min">
 
                 <!-- 內容開始 -->
                 <div>
-                    @Html.Raw(Model.First().AboutUs)
+                    @Html.Raw(Model.First().Organization)
                 </div>
                 <!-- 內容結束 -->
 
