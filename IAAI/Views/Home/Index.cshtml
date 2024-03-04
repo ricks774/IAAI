@@ -2,6 +2,19 @@
     ViewBag.Title = "Home Page";
 }
 
+@model IEnumerable<IAAI.Models.News>
+
+@section styles{
+    <style>
+        .post-text {
+            max-height: 100px; /* 設定最大高度 */
+            overflow: hidden; /* 隱藏溢出的文字 */
+            white-space: nowrap; /* 避免文字換行 */
+            text-overflow: ellipsis; /* 文字溢出時顯示... */
+        }
+    </style>
+}
+
 <!-- Carousel -->
 <div id="main-slide" class="carousel slide" data-ride="carousel">
 
@@ -33,77 +46,26 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="latest-post">
-                    <img class="img-responsive" src="~/Scripts/Images/newsimg-01.jpg" alt="img">
-                    <div class="post-body">
-                        <h4 class="post-title">
-                            <a href="#">最新消息標題最新消息標題最新消息標題最新消息標題</a>
-                        </h4>
-                        <span class="post-item-date">
-                            <i class="fa fa-clock-o"></i> 2016-03-28
-                        </span>
-                        <div class="post-text">
-                            <p>最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文...</p>
+            @foreach (var news in Model)
+            {
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="latest-post">
+                        <img class="img-responsive" src="~/Scripts/Images/newsimg-01.jpg" alt="img">
+                        <div class="post-body">
+                            <h4 class="post-title">
+                                <a href="#">@news.Title</a>
+                            </h4>
+                            <span class="post-item-date">
+                                <i class="fa fa-clock-o"></i> @news.PubDate
+                            </span>
+                            <div class="post-text">
+                                <p>@Html.Raw(news.Content)</p>
+                            </div>
                         </div>
-                    </div>
-                    <a href="#" class="btn btn-primary">More</a>
-                </div><!-- Latest post end -->
-            </div><!-- 1st post col end -->
-
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="latest-post">
-                    <img class="img-responsive" src="~/Scripts/Images/newsimg-02.jpg" alt="img">
-                    <div class="post-body">
-                        <h4 class="post-title">
-                            <a href="#">最新消息標題最新消息標題最新消息標題最新消息標題</a>
-                        </h4>
-                        <span class="post-item-date">
-                            <i class="fa fa-clock-o"></i> 2016-03-28
-                        </span>
-                        <div class="post-text">
-                            <p>最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文...</p>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-primary">More</a>
-                </div><!-- Latest post end -->
-            </div><!-- 2nd post col end -->
-
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="latest-post">
-                    <img class="img-responsive" src="~/Scripts/Images/newsimg-03.jpg" alt="img">
-                    <div class="post-body">
-                        <h4 class="post-title">
-                            <a href="#">最新消息標題最新消息標題最新消息標題最新消息標題</a>
-                        </h4>
-                        <span class="post-item-date">
-                            <i class="fa fa-clock-o"></i> 2016-03-28
-                        </span>
-                        <div class="post-text">
-                            <p>最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文...</p>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-primary">More</a>
-                </div><!-- Latest post end -->
-            </div><!-- 3rd post col end -->
-
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="latest-post">
-                    <img class="img-responsive" src="~/Scripts/Images/newsimg-04.jpg" alt="img">
-                    <div class="post-body">
-                        <h4 class="post-title">
-                            <a href="#">最新消息標題最新消息標題最新消息標題最新消息標題</a>
-                        </h4>
-                        <span class="post-item-date">
-                            <i class="fa fa-clock-o"></i> 2016-03-28
-                        </span>
-                        <div class="post-text">
-                            <p>最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文最新消息內文...</p>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-primary">More</a>
-                </div><!-- Latest post end -->
-            </div><!-- 4rd post col end -->
+                        <a href="#" class="btn btn-primary">More</a>
+                    </div><!-- Latest post end -->
+                </div><!-- post col end -->
+            }
         </div><!--/ Content row end -->
     </div><!--/ Container end -->
 </section><!--/ News end -->
