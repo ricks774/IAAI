@@ -29,11 +29,9 @@ namespace IAAI.Controllers
             return View(db.Abouts.ToList());
         }
 
-        public ActionResult Contact()
+        public ActionResult History()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(db.Abouts.ToList());
         }
     }
 }
