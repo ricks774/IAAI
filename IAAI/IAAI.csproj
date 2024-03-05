@@ -387,6 +387,7 @@
     <Content Include="Views\Home\Expert.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Scope.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

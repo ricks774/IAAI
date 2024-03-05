@@ -54,5 +54,10 @@ namespace IAAI.Controllers
             var news = db.News.FirstOrDefault(n => n.Id == id);
             return View(news);
         }
+
+        public ActionResult Scope()
+        {
+            return View(db.Businesses.ToList());
+        }
     }
 }
