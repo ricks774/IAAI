@@ -389,6 +389,7 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Scope.cshtml" />
     <Content Include="Views\Home\Accreditation.cshtml" />
+    <Content Include="Views\Home\Consult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

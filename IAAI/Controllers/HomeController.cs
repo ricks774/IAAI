@@ -64,5 +64,10 @@ namespace IAAI.Controllers
         {
             return View(db.Businesses.ToList());
         }
+
+        public ActionResult Consult()
+        {
+            return View(db.Businesses.ToList());
+        }
     }
 }
