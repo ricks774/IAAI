@@ -59,5 +59,10 @@ namespace IAAI.Controllers
         {
             return View(db.Businesses.ToList());
         }
+
+        public ActionResult Accreditation()
+        {
+            return View(db.Businesses.ToList());
+        }
     }
 }
