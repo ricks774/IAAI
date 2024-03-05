@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "KnowledgeDetails";
+}
+@*@model IEnumerable<IAAI.Models.News>*@
+@model IAAI.Models.Knowledge
+
+<div id="banner-area" class="banner-area" style="background-image: url(/Scripts/Images/banner-bg.jpg) ">
+    <!-- Subpage title start -->
+    <div class="banner-text text-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="breadcrumb">
+                        <li>首頁</li>
+                        <li>關於我們</li>
+                        <li><a href="#"> 訊息發布</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- Subpage title end -->
+</div><!-- Banner area end -->
+
+<section id="main-container" class="main-container">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                <div class="sidebar sidebar-right">
+                    <div class="widget">
+                        <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>訊息發布</h2>
+                        <ul class="arrow nav nav-tabs nav-stacked">
+                            <li class="active"><a href="About">訊息發布</a></li>
+                        </ul>
+                    </div><!-- Categories end -->
+                </div><!-- Sidebar end -->
+            </div><!-- Sidebar Col end -->
+
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <h2 class="page-title">訊息發布</h2>
+                <hr class="botmargin-min">
+
+                <!-- 內容開始 -->
+                <div class="post-content">
+
+                    <div class="post-body">
+                        <div class="entry-header">
+                            <span class="post-meta-date"><i class="fa fa fa-clock-o"></i> @Model.PubDate.Value.ToShortDateString()</span>
+                            <h2 class="entry-title">
+                                @Model.Title
+                            </h2>
+                        </div><!-- header end -->
+
+                        <div class="post-media post-image">
+                            <img src="images/news-img.jpg" class="img-responsive" alt="">
+                        </div>
+
+                        <div class="entry-content topmargin-min">
+                            @Html.Raw(Model.Content)
+                        </div>
+
+                        <div class="tags-area clearfix">
+                            <div class="post-footer  pull-left">
+                                <a href="@Url.Action("Knowledge", "Home")" class="btn btn-primary">返回列表</a>
+                            </div>
+
+                            <div class="share-items pull-right">
+                                <ul class="post-social-icons unstyled">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!-- post-body end -->
+                </div><!-- post content end -->
+                <!-- 內容結束 -->
+            </div><!-- Content Col end -->
+        </div><!-- Main row end -->
+    </div><!-- Conatiner end -->
+</section><!-- Main container end -->
