@@ -85,5 +85,10 @@ namespace IAAI.Controllers
             var news = db.Knowledges.FirstOrDefault(n => n.Id == id);
             return View(news);
         }
+
+        public ActionResult Calendar()
+        {
+            return View();
+        }
     }
 }
