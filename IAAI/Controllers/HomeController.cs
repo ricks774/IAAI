@@ -49,7 +49,7 @@ namespace IAAI.Controllers
             return View(db.News.ToList());
         }
 
-        public ActionResult Details(int id)
+        public ActionResult NewsDetail(int id)
         {
             var news = db.News.FirstOrDefault(n => n.Id == id);
             return View(news);

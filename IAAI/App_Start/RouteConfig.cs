@@ -23,7 +23,7 @@ namespace IAAI
             routes.MapRoute(
                 name: "NewsDetails",
                 url: "Home/News/Details/{id}",
-                defaults: new { controller = "News", action = "Details", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "NewsDetail", id = UrlParameter.Optional }
             );
         }
     }

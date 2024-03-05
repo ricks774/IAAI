@@ -397,7 +397,7 @@
     <Content Include="Views\Home\Certified.cshtml" />
     <Content Include="Views\Home\Expert.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\NewsDetail.cshtml" />
     <Content Include="Views\Home\Scope.cshtml" />
     <Content Include="Views\Home\Accreditation.cshtml" />
     <Content Include="Views\Home\Consult.cshtml" />
