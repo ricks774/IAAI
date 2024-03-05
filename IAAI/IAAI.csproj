@@ -155,6 +155,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handler\CaptchaHandler.ashx.cs">
+      <DependentUpon>CaptchaHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202402280210383_update AboutUs.cs" />
     <Compile Include="Migrations\202402280210383_update AboutUs.Designer.cs">
       <DependentUpon>202402280210383_update AboutUs.cs</DependentUpon>
@@ -303,6 +306,7 @@
     <Content Include="Areas\Backend\Views\Knowledge\Details.cshtml" />
     <Content Include="Areas\Backend\Views\Knowledge\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Knowledge\Index.cshtml" />
+    <Content Include="Handler\CaptchaHandler.ashx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dist\tree.js" />
     <Content Include="Scripts\dist\tree.min.js" />

@@ -93,6 +93,24 @@ namespace IAAI.Controllers
 
         public ActionResult Contact()
         {
+            // 獲取用戶輸入的圖形文字
+            string userCaptcha = Request.Form["captcha"];
+
+            // 從會話中獲取生成的圖形文字
+            string generatedCaptcha = Session["ValidatePictureCode"] as string;
+
+            // 驗證圖形文字是否匹配
+            if (userCaptcha == generatedCaptcha)
+            {
+                // 驗證通過，執行相應的操作
+                ViewBag.SuccessMessage = "驗證碼正確";
+            }
+            else
+            {
+                // 驗證失敗，顯示錯誤信息或採取其他措施
+                ViewBag.SuccessMessage = "驗證碼錯了";
+            }
+
             return View();
         }
     }
