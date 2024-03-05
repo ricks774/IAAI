@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+@model IEnumerable<IAAI.Models.News>
+
+@section styles{
+    <style>
+        .post-text {
+            max-height: 100px; /* 設定最大高度 */
+            overflow: hidden; /* 隱藏溢出的文字 */
+            white-space: nowrap; /* 避免文字換行 */
+            text-overflow: ellipsis; /* 文字溢出時顯示... */
+        }
+    </style>
+}
+
+<div id="banner-area" class="banner-area" style="background-image: url(/Scripts/Images/banner-bg.jpg) ">
+    <!-- Subpage title start -->
+    <div class="banner-text text-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="breadcrumb">
+                        <li>首頁</li>
+                        <li>關於我們</li>
+                        <li><a href="#"> 訊息發布</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- Subpage title end -->
+</div><!-- Banner area end -->
+
+<section id="main-container" class="main-container">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                <div class="sidebar sidebar-right">
+                    <div class="widget">
+                        <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>訊息發布</h2>
+                        <ul class="arrow nav nav-tabs nav-stacked">
+                            <li class="active"><a href="About">訊息發布</a></li>
+                        </ul>
+                    </div><!-- Categories end -->
+                </div><!-- Sidebar end -->
+            </div><!-- Sidebar Col end -->
+
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <h2 class="page-title">訊息發布</h2>
+                <hr class="botmargin-min">
+
+                <!-- 內容開始 -->
+
+                @foreach (var news in Model)
+                {
+                    <div class="post">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                <div class="post-media post-image">
+                                    <a href="news_show.html"><img alt="img" src="~/Scripts/Images/newsimg-01.jpg" class="img-responsive"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-9 col-sm-12 col-xs-12">
+                                <div class="post-body">
+                                    <div class="entry-header">
+                                        <span class="post-meta-date"><i class="fa fa fa-clock-o"></i> @news.PubDate.Value.ToString("yyyy-MM-dd")</span>
+                                        <h3 class="entry-title">
+                                            <a href="news_show.html">@news.Title</a>
+                                        </h3>
+                                        <div class="post-text">
+                                            <p>@Html.Raw(news.Content)</p>
+                                        </div>
+                                    </div>
+                                    <!-- header end -->
+                                    <div class="post-footer">
+                                        <a href="Details/@news.Id" class="btn btn-primary">more</a>
+                                    </div>
+                                </div>
+                                <!-- post-body end -->
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="paging text-center">
+                    <ul class="pagination">
+                        <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                    </ul>
+
+                    @*<div class="paging text-center">
+                            <span class="disabled">«</span>
+                            <span class="current">1</span>
+                            <a href="/news?page=2" title="">2</a>
+                            <a href="/news?page=3" title="">3</a>
+                            <a href="/news?page=4" title="">4</a>
+                            <a href="/news?page=2" title="Next page">»</a>
+                        </div>*@
+                </div>
+
+                <!-- 內容結束 -->
+
+                <div class="tags-area clearfix">
+
+                    <div class="share-items pull-right">
+                        <ul class="post-social-icons unstyled">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- Content Col end -->
+        </div><!-- Main row end -->
+    </div><!-- Conatiner end -->
+</section><!-- Main container end -->

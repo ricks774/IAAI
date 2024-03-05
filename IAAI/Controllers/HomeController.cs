@@ -43,5 +43,10 @@ namespace IAAI.Controllers
         {
             return View(db.Abouts.ToList());
         }
+
+        public ActionResult News()
+        {
+            return View(db.News.ToList());
+        }
     }
 }
