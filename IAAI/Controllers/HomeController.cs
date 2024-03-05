@@ -54,5 +54,30 @@ namespace IAAI.Controllers
             var news = db.News.FirstOrDefault(n => n.Id == id);
             return View(news);
         }
+
+        public ActionResult Scope()
+        {
+            return View(db.Businesses.ToList());
+        }
+
+        public ActionResult Accreditation()
+        {
+            return View(db.Businesses.ToList());
+        }
+
+        public ActionResult Consult()
+        {
+            return View(db.Businesses.ToList());
+        }
+
+        public ActionResult Investigation()
+        {
+            return View(db.Businesses.ToList());
+        }
+
+        public ActionResult Knowledge()
+        {
+            return View(db.Knowledges.ToList());
+        }
     }
 }

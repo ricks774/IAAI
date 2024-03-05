@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Scope";
+}
+@model IEnumerable<IAAI.Models.Business>
+
+<div id="banner-area" class="banner-area" style="background-image: url(/Scripts/Images/banner-bg.jpg) ">
+    <!-- Subpage title start -->
+    <div class="banner-text text-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="breadcrumb">
+                        <li>首頁</li>
+                        <li>關於我們</li>
+                        <li><a href="#"> 訊息發布</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- Subpage title end -->
+</div><!-- Banner area end -->
+
+<section id="main-container" class="main-container">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                <div class="sidebar sidebar-right">
+                    <div class="widget">
+                        <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>協會業務</h2>
+                        <ul class="arrow nav nav-tabs nav-stacked">
+                            <li class="active"><a href="Scope">協會業務</a></li>
+                            <li><a href="Accreditation">訓練、認證、發照</a></li>
+                            <li><a href="Consult">諮詢、顧問</a></li>
+                            <li><a href="Investigation">縱火查詢</a></li>
+                        </ul>
+                    </div><!-- Categories end -->
+                </div><!-- Sidebar end -->
+            </div><!-- Sidebar Col end -->
+
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <h2 class="page-title">協會業務</h2>
+                <hr class="botmargin-min">
+
+                <!-- 內容開始 -->
+                <div>
+                    @Html.Raw(Model.First().Scope)
+                </div>
+                <!-- 內容結束 -->
+
+                <div class="tags-area clearfix">
+
+                    <div class="share-items pull-right">
+                        <ul class="post-social-icons unstyled">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- Content Col end -->
+        </div><!-- Main row end -->
+    </div><!-- Conatiner end -->
+</section><!-- Main container end -->
