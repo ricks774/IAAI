@@ -25,6 +25,12 @@ namespace IAAI
                 url: "Home/News/Details/{id}",
                 defaults: new { controller = "Home", action = "NewsDetail", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "KnowledgeDetail",
+                url: "Home/Knowledge/Details/{id}",
+                defaults: new { controller = "Home", action = "KnowledgeDetail", id = UrlParameter.Optional }
+            );
         }
     }
 }

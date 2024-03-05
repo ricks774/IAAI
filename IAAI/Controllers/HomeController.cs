@@ -79,5 +79,11 @@ namespace IAAI.Controllers
         {
             return View(db.Knowledges.ToList());
         }
+
+        public ActionResult KnowledgeDetail(int id)
+        {
+            var news = db.Knowledges.FirstOrDefault(n => n.Id == id);
+            return View(news);
+        }
     }
 }
