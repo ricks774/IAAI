@@ -62,7 +62,7 @@
                                 <p>@Html.Raw(news.Content)</p>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-primary">More</a>
+                        <a href="@Url.Action("Details", "Home")/@news.Id" class="btn btn-primary">More</a>
                     </div><!-- Latest post end -->
                 </div><!-- post col end -->
             }
