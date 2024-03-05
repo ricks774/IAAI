@@ -1,0 +1,63 @@
+﻿@model IEnumerable<IAAI.Models.Knowledge>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Backend/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <style>
+        body {
+            color: #f4f4f4;
+        }
+
+        a {
+            color: #00bcd4;
+        }
+    </style>
+}
+
+<h2>知識庫下載</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PubDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.Raw(item.Content)
+            </td>
+            <td>
+                @String.Format("{0:yyyy/MM/dd}", item.PubDate)
+            </td>
+            <td>
+                @String.Format("{0:yyyy/MM/dd}", item.CreateDate)
+            </td>
+            <td>
+                @Html.ActionLink("編輯", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("刪除", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
