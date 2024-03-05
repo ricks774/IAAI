@@ -405,6 +405,7 @@
     <Content Include="Views\Home\Knowledge.cshtml" />
     <Content Include="Views\Home\KnowledgeDetail.cshtml" />
     <Content Include="Views\Home\Calendar.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+@section scripts {
+    <script>
+        function checkValue() {
+            var emailInput = document.getElementById("emailInput");
+            var emailError = document.getElementById("emailError");
+
+            if (emailInput.value.trim() === "") {
+                emailError.style.display = "inline";
+            } else {
+                emailInput.style.display = "none";
+            }
+        }
+    </script>
+}
+
+<div id="banner-area" class="banner-area" style="background-image: url(/Scripts/Images/banner-bg.jpg) ">
+    <!-- Subpage title start -->
+    <div class="banner-text text-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="breadcrumb">
+                        <li>首頁</li>
+                        <li>聯絡我們</li>
+                        <li><a href="#"> 聯絡我們</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- Subpage title end -->
+</div><!-- Banner area end -->
+
+<section id="main-container" class="main-container">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                <div class="sidebar sidebar-right">
+                    <div class="widget">
+                        <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>聯絡我們</h2>
+                        <ul class="arrow nav nav-tabs nav-stacked">
+                            <li class="active"><a href="History">聯絡我們</a></li>
+                        </ul>
+                    </div><!-- Categories end -->
+                </div><!-- Sidebar end -->
+            </div><!-- Sidebar Col end -->
+
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <h2 class="page-title">聯絡我們</h2>
+                <hr class="botmargin-min">
+
+                <!-- 內容開始 -->
+                <form class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">姓　名：</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" placeholder="請輸入姓名">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">性　別：</label>
+                        <div class="col-sm-7">
+                            <label class="checkbox-inline checkbox01">
+                                <input class=" radiostyle01" type="radio" name="radio" id="radio" value="radio" /> 男
+                            </label>
+                            <label class="checkbox-inline checkbox01">
+                                <input class="radiostyle01" type="radio" name="radio" id="radio" value="radio" /> 女
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">聯絡電話：</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" placeholder="請輸入聯絡電話">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">E-mail：</label>
+                        <div class="col-sm-7">
+                            @*<input class="form-control" placeholder="請輸入E-mail">*@
+                            <input id="emailInput" class="form-control" placeholder="請輸入E-mail" onblur="checkValue()">
+                        </div>
+                        <div class="col-sm-3">
+                            @*<span class="alertred"><i class="fa fa-exclamation-circle"></i> E-mail必填</span>*@
+                            <span id="emailError" class="alertred" style="display: none;"><i class="fa fa-exclamation-circle"></i> E-mail必填</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">詢問內容：</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control form-control-message" placeholder="請輸入詢問內容" rows="10" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">驗證碼：</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" placeholder="請輸入驗證碼">
+                        </div>
+                        <div class="col-sm-4">
+                            <img src="images/test.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button class="btn btn-primary solid blank" type="submit">送 出</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- 內容結束 -->
+
+                <div class="tags-area clearfix">
+
+                    <div class="share-items pull-right">
+                        <ul class="post-social-icons unstyled">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- Content Col end -->
+        </div><!-- Main row end -->
+    </div><!-- Conatiner end -->
+</section><!-- Main container end -->
