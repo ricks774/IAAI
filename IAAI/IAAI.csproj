@@ -144,6 +144,7 @@
     <Compile Include="Areas\Backend\Controllers\ExpertController.cs" />
     <Compile Include="Areas\Backend\Controllers\HistoryController.cs" />
     <Compile Include="Areas\Backend\Controllers\InvestigationController.cs" />
+    <Compile Include="Areas\Backend\Controllers\KnowledgeController.cs" />
     <Compile Include="Areas\Backend\Controllers\LoginController.cs" />
     <Compile Include="Areas\Backend\Controllers\NewsController.cs" />
     <Compile Include="Areas\Backend\Controllers\OrganizationController.cs" />
@@ -166,11 +167,16 @@
     <Compile Include="Migrations\202403010640358_add Businss Model.designer.cs">
       <DependentUpon>202403010640358_add Businss Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202403050548245_ad Knowledge.cs" />
+    <Compile Include="Migrations\202403050548245_ad Knowledge.designer.cs">
+      <DependentUpon>202403050548245_ad Knowledge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\About.cs" />
     <Compile Include="Models\Business.cs" />
     <Compile Include="Models\CertifiedMember.cs" />
     <Compile Include="Models\IAAIDBContent.cs" />
+    <Compile Include="Models\Knowledge.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Permissions.cs" />
     <Compile Include="Models\User.cs" />
@@ -292,6 +298,11 @@
     <Content Include="Areas\Backend\Views\Investigation\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Investigation\Index.cshtml" />
     <Content Include="Scripts\Images\Thumbs.db" />
+    <Content Include="Areas\Backend\Views\Knowledge\Create.cshtml" />
+    <Content Include="Areas\Backend\Views\Knowledge\Delete.cshtml" />
+    <Content Include="Areas\Backend\Views\Knowledge\Details.cshtml" />
+    <Content Include="Areas\Backend\Views\Knowledge\Edit.cshtml" />
+    <Content Include="Areas\Backend\Views\Knowledge\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dist\tree.js" />
     <Content Include="Scripts\dist\tree.min.js" />
@@ -422,6 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202403010640358_add Businss Model.resx">
       <DependentUpon>202403010640358_add Businss Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403050548245_ad Knowledge.resx">
+      <DependentUpon>202403050548245_ad Knowledge.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
