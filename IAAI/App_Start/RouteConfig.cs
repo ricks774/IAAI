@@ -18,6 +18,13 @@ namespace IAAI
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            // 似乎沒有用
+            routes.MapRoute(
+                name: "NewsDetails",
+                url: "Home/News/Details/{id}",
+                defaults: new { controller = "News", action = "Details", id = UrlParameter.Optional }
+            );
         }
     }
 }
