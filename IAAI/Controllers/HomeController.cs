@@ -1,4 +1,5 @@
-﻿using IAAI.Models;
+﻿using IAAI.Handler;
+using IAAI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -105,6 +106,12 @@ namespace IAAI.Controllers
             if (captcha != generatedCaptcha)
             {
                 ViewBag.Message = "驗證碼錯誤";
+            }
+            else
+            {
+                string context = "<h3>感謝您的來信，我們會盡快與您聯絡</h3>";
+                Gmail.SendGmail(context);
+                ViewBag.Message = "送出成功";
             }
             return View();
         }
