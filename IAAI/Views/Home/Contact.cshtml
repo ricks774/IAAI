@@ -4,15 +4,11 @@
 
 @section scripts {
     <script>
-        function checkValue() {
-            var emailInput = document.getElementById("emailInput");
-            var emailError = document.getElementById("emailError");
-
-            if (emailInput.value.trim() === "") {
-                emailError.style.display = "inline";
-            } else {
-                emailInput.style.display = "none";
-            }
+        // 檢查 ViewBag 中的成功消息是否存在
+        var successMessage = '@ViewBag.Message';
+        if (successMessage == '驗證碼錯誤') {
+            // 如果存在，顯示 JavaScript 提示框
+            alert(successMessage);
         }
     </script>
 }
@@ -87,12 +83,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">E-mail：</label>
                         <div class="col-sm-7">
-                            @*<input class="form-control" placeholder="請輸入E-mail">*@
-                            <input id="emailInput" class="form-control" placeholder="請輸入E-mail" onblur="checkValue()">
-                        </div>
-                        <div class="col-sm-3">
-                            @*<span class="alertred"><i class="fa fa-exclamation-circle"></i> E-mail必填</span>*@
-                            <span id="emailError" class="alertred" style="display: none;"><i class="fa fa-exclamation-circle"></i> E-mail必填</span>
+                            <input class="form-control" placeholder="請輸入E-mail" required>
                         </div>
                     </div>
 
@@ -106,10 +97,10 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">驗證碼：</label>
                         <div class="col-sm-3">
-                            <input class="form-control" placeholder="請輸入驗證碼">
+                            <input class="form-control" name="captcha" placeholder="請輸入驗證碼">
                         </div>
                         <div class="col-sm-4">
-                            <img src="images/test.jpg" alt="">
+                            <img src="~/Handler/CaptchaHandler.ashx" alt="">
                         </div>
                     </div>
 

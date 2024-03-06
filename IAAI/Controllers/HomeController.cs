@@ -1,4 +1,5 @@
-﻿using IAAI.Models;
+﻿using IAAI.Handler;
+using IAAI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,8 +92,27 @@ namespace IAAI.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Contact(string captcha)
         {
+            // 從會話中獲取生成的圖形文字
+            string generatedCaptcha = Session["ValidatePictureCode"] as string;
+
+            if (captcha != null)
+            {
+                captcha = captcha.ToLower();
+            }
+
+            // 驗證圖形文字是否匹配
+            if (captcha != generatedCaptcha)
+            {
+                ViewBag.Message = "驗證碼錯誤";
+            }
+            else
+            {
+                string context = "<h3>感謝您的來信，我們會盡快與您聯絡</h3>";
+                Gmail.SendGmail(context);
+                ViewBag.Message = "送出成功";
+            }
             return View();
         }
     }
