@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-@model IEnumerable<IAAI.Models.About>
+@model IEnumerable<IAAI.Models.CertifiedMember>
 
 <div id="banner-area" class="banner-area" style="background-image: url(/Scripts/Images/banner-bg.jpg) ">
     <!-- Subpage title start -->
@@ -47,7 +47,45 @@
 
                 <!-- 內容開始 -->
                 <div>
-                    @Html.Raw(Model.First().Certified)
+                    <h3 style="color:orange">國際會員</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr style="color: white; background-color: #b1271a">
+                                <th class="mdl-data-table__cell--non-numeric">Picture</th>
+                                <th class="mdl-data-table__cell--non-numeric">First name</th>
+                                <th class="mdl-data-table__cell--non-numeric">Last name</th>
+                                <th class="mdl-data-table__cell--non-numeric">Country</th>
+                                <th class="mdl-data-table__cell--non-numeric">Title</th>
+                                <th class="mdl-data-table__cell--non-numeric">Company</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr style="border-color: #b1271a; border-width: 2px">
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        <img src="@Html.DisplayFor(modelItem => item.Picture)" />
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        @Html.DisplayFor(modelItem => item.FirstName)
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        @Html.DisplayFor(modelItem => item.LastName)
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        @Html.DisplayFor(modelItem => item.Country)
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        @Html.DisplayFor(modelItem => item.Company)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
                 <!-- 內容結束 -->
 
