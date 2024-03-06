@@ -91,26 +91,21 @@ namespace IAAI.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Contact(string captcha)
         {
-            // 獲取用戶輸入的圖形文字
-            string userCaptcha = Request.Form["captcha"];
-
             // 從會話中獲取生成的圖形文字
             string generatedCaptcha = Session["ValidatePictureCode"] as string;
 
-            // 驗證圖形文字是否匹配
-            if (userCaptcha == generatedCaptcha)
+            if (captcha != null)
             {
-                // 驗證通過，執行相應的操作
-                ViewBag.SuccessMessage = "驗證碼正確";
-            }
-            else
-            {
-                // 驗證失敗，顯示錯誤信息或採取其他措施
-                ViewBag.SuccessMessage = "驗證碼錯了";
+                captcha = captcha.ToLower();
             }
 
+            // 驗證圖形文字是否匹配
+            if (captcha != generatedCaptcha)
+            {
+                ViewBag.Message = "驗證碼錯誤";
+            }
             return View();
         }
     }
