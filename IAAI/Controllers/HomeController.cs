@@ -37,7 +37,7 @@ namespace IAAI.Controllers
 
         public ActionResult Certified()
         {
-            return View(db.Abouts.ToList());
+            return View(db.CertifiedMembers.ToList());
         }
 
         public ActionResult Expert()
